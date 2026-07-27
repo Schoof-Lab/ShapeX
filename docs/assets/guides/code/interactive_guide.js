@@ -1907,7 +1907,7 @@ function activateTab(tab, moveFocus = true) {
   closeTessellatorDetail(false);
   closeMainThemeDetail(false);
   closeMainRunDetail(false);
-  closeInstallationCatalogDetail(false);
+  closeInstallationDetail(false);
   closeInstrumentGuide(false);
   clearActiveControl();
 
