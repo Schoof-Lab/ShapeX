@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Text?>
+
+<VBox spacing="12"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml/1">
+    <!-- Run, Output, and menu settings -->
+    <StackPane>
+        <VBox spacing="16" styleClass="standard-padding">
+            <Region prefHeight="4"/>
+            <VBox spacing="6">
+                <HBox alignment="CENTER">
+                    <Button text="%execute.button.text"
+                            onAction="#handleRun"
+                            styleClass="run-button"/>
+                </HBox>
+                <HBox spacing="8" alignment="CENTER">
+                    <Label text="%output.directory.label"
+                           styleClass="standard-message"/>
+                    <TextField fx:id="outputDirectoryField"
+                               promptText="%project.none.open"
+                               editable="true"
+                               maxWidth="420"
+                               HBox.hgrow="ALWAYS"
+                               styleClass="path-field"/>
+                    <Button fx:id="browseProjectButton"
+                            focusTraversable="false"
+                            onAction="#handleBrowseProject"
+                            styleClass="icon-button">
+                        <tooltip>
+                            <Tooltip text="%output.directory.button.tooltip"/>
+                        </tooltip>
+                        <graphic>
+                            <Text styleClass="fa-icon"
+                                  text="%output.directory.button.label"/>
+                        </graphic>
+                    </Button>
+                </HBox>
+            </VBox>
+        </VBox>
+        <Button fx:id="windowSizeToggleButton"
+                focusTraversable="false"
+                onAction="#handleToggleWindowSize"
+                styleClass="window-size-toggle-button"
+                StackPane.alignment="TOP_RIGHT">
+            <StackPane.margin>
+                <Insets top="8" right="10" bottom="0" left="0"/>
+            </StackPane.margin>
+            <tooltip>
+                <Tooltip text="%window.toggle_size.tooltip"/>
+            </tooltip>
+            <graphic>
+                <Text styleClass="fa-icon"
+                      text="%window.toggle_size.icon"/>
+            </graphic>
+        </Button>
+        <HBox spacing="6"
+              alignment="TOP_LEFT"
+              maxWidth="-Infinity"
+              maxHeight="-Infinity"
+              pickOnBounds="false"
+              StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+                <Insets top="8" right="0" bottom="0" left="10"/>
+            </StackPane.margin>
+            <Button focusTraversable="false"
+                    onAction="#handleShowThemeColorPicker"
+                    styleClass="shapex-window-button">
+                <tooltip>
+                    <Tooltip text="%window.shapex_icon.tooltip"/>
+                </tooltip>
+                <graphic>
+                    <StackPane minWidth="18"
+                               minHeight="18"
+                               prefWidth="18"
+                               prefHeight="18"
+                               maxWidth="18"
+                               maxHeight="18">
+                        <SVGPath styleClass="shapex-window-icon-primary"
+                                 content="M 1.44 10.2 C 0.72 7.8 2.52 5.06 5.22 4.54 C 7.38 4.2 8.64 5.06 9.9 3.51 C 10.98 2.14 12.42 1.29 14.4 1.8 C 16.74 2.31 18 4.37 17.46 6.6 C 17.1 8.66 16.02 10.2 14.94 11.23 C 13.86 12.6 13.32 13.8 13.68 15.17 C 14.04 16.54 12.6 17.4 10.8 17.23 C 8.28 17.06 5.58 17.23 3.78 15.86 C 1.98 14.49 1.08 12.43 1.44 10.2 Z">
+                            <clip>
+                                <SVGPath content="M 0 0 L 0 20 L 20 20 Z"/>
+                            </clip>
+                        </SVGPath>
+                        <SVGPath styleClass="shapex-window-icon-secondary"
+                                 content="M 1.44 10.2 C 0.72 7.8 2.52 5.06 5.22 4.54 C 7.38 4.2 8.64 5.06 9.9 3.51 C 10.98 2.14 12.42 1.29 14.4 1.8 C 16.74 2.31 18 4.37 17.46 6.6 C 17.1 8.66 16.02 10.2 14.94 11.23 C 13.86 12.6 13.32 13.8 13.68 15.17 C 14.04 16.54 12.6 17.4 10.8 17.23 C 8.28 17.06 5.58 17.23 3.78 15.86 C 1.98 14.49 1.08 12.43 1.44 10.2 Z">
+                            <clip>
+                                <SVGPath content="M 0 0 L 20 0 L 20 20 Z"/>
+                            </clip>
+                        </SVGPath>
+                    </StackPane>
+                </graphic>
+            </Button>
+            <Button focusTraversable="false"
+                    onAction="#handleOpenUserGuide"
+                    styleClass="window-user-guide-button">
+                <tooltip>
+                    <Tooltip text="%window.user_guide.tooltip"/>
+                </tooltip>
+                <graphic>
+                    <Group>
+                        <Circle centerX="9.0"
+                                centerY="9.0"
+                                radius="7.6"
+                                styleClass="window-user-guide-icon-ring"/>
+                        <Circle centerX="9.0"
+                                centerY="5.0"
+                                radius="1.45"
+                                styleClass="window-user-guide-icon-fill"/>
+                        <Rectangle x="7.45"
+                                   y="7.25"
+                                   width="3.1"
+                                   height="1.7"
+                                   styleClass="window-user-guide-icon-fill"/>
+                        <Rectangle x="7.75"
+                                   y="8.65"
+                                   width="2.5"
+                                   height="5.5"
+                                   styleClass="window-user-guide-icon-fill"/>
+                        <Rectangle x="6.45"
+                                   y="13.85"
+                                   width="5.1"
+                                   height="1.8"
+                                   styleClass="window-user-guide-icon-fill"/>
+                    </Group>
+                </graphic>
+            </Button>
+        </HBox>
+    </StackPane>
+    <VBox styleClass="separator-container">
+        <Separator/>
+    </VBox>
+    <Accordion fx:id="settingsAccordion"
+               maxHeight="Infinity"
+               VBox.vgrow="ALWAYS">
+        <panes>
+            <!-- Outputs Pane -->
+            <TitledPane text="%pane.outputs">
+                <content>
+                    <HBox>
+                        <Region prefWidth="20"/>
+                        <VBox HBox.hgrow="ALWAYS">
+                            <Accordion fx:id="outputsAccordion"
+                                       styleClass="nested-accordion"
+                                       expandedPane="$xmlPane">
+                                <panes>
+                                    <!-- LCM Pane -->
+                                    <TitledPane fx:id="xmlPane" expanded="false">
+                                        <graphic>
+                                            <CheckBox fx:id="xmlLMDCheckBox"
+                                                      text="%output.xml.label"
+                                                      selected="true"/>
+                                        </graphic>
+                                        <content>
+                                            <VBox spacing="10" alignment="TOP_LEFT" styleClass="subtitledpane-padding">
+                                                <RadioButton text="%output.xml.option.mmi"
+                                                             disable="true">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="LmdToggleGroup"/>
+                                                    </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton toggleGroup="$LmdToggleGroup"
+                                                             text="%output.xml.option.laxco"
+                                                             disable="true"/>
+                                                <RadioButton toggleGroup="$LmdToggleGroup"
+                                                             text="%output.xml.option.zeiss"
+                                                             disable="true"/>
+                                                <RadioButton selected="true"
+                                                             toggleGroup="$LmdToggleGroup"
+                                                             text="%output.xml.option.leica"/>
+                                                <RadioButton toggleGroup="$LmdToggleGroup"
+                                                             text="%output.xml.option.meteor"
+                                                             disable="true"/>
+                                                <RadioButton toggleGroup="$LmdToggleGroup"
+                                                             text="%output.xml.option.thermo"
+                                                             disable="true"/>
+                                            </VBox>
+                                        </content>
+                                    </TitledPane>
+                                    <!-- Plate Overview Pane -->
+                                    <TitledPane>
+                                        <graphic>
+                                            <CheckBox fx:id="overviewCheckBox"
+                                                      text="%output.overview.label"
+                                                      selected="true"/>
+                                        </graphic>
+                                        <content>
+                                            <VBox spacing="10" alignment="TOP_LEFT" styleClass="subtitledpane-padding">
+                                                <RadioButton toggleGroup="$overviewToggleGroup"
+                                                             text="%output.overview.option.excel"
+                                                             selected="true">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="overviewToggleGroup"/>
+                                                    </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton fx:id="numbersRadio"
+                                                             toggleGroup="$overviewToggleGroup"
+                                                             text="%output.overview.option.numbers"/>
+                                                <RadioButton fx:id="openDocRadio"
+                                                             toggleGroup="$overviewToggleGroup"
+                                                             text="%output.overview.option.opendoc"/>
+                                                <RadioButton fx:id="csvRadio"
+                                                             toggleGroup="$overviewToggleGroup"
+                                                             text="%output.overview.option.csv"/>
+                                                <RadioButton fx:id="tsvRadio"
+                                                             toggleGroup="$overviewToggleGroup"
+                                                             text="%output.overview.option.tsv"/>
+                                                <RadioButton fx:id="txtRadio"
+                                                             toggleGroup="$overviewToggleGroup"
+                                                             text="%output.overview.option.txt"/>
+                                            </VBox>
+                                        </content>
+                                    </TitledPane>
+                                    <!-- IDOT Pane -->
+                                    <TitledPane>
+                                        <graphic>
+                                            <CheckBox fx:id="IDOTCheckBox"
+                                                      text="%output.idot.label"
+                                                      selected="true"/>
+                                        </graphic>
+                                        <content>
+                                            <HBox spacing="15"
+                                                  alignment="CENTER"
+                                                  styleClass="standard-padding">
+                                                <TableView fx:id="idotTable"
+                                                           prefWidth="420"
+                                                           editable="true">
+                                                    <columns>
+                                                        <TableColumn fx:id="idotNameColumn"
+                                                                     text="%output.idot.column.name"
+                                                                     prefWidth="150"/>
+                                                        <TableColumn fx:id="idotVolumeColumn"
+                                                                     text="%output.idot.column.volume"
+                                                                     prefWidth="120"/>
+                                                        <TableColumn fx:id="idotLiquidColumn"
+                                                                     text="%output.idot.column.liquid"
+                                                                     prefWidth="150"/>
+                                                    </columns>
+                                                </TableView>
+                                                <VBox spacing="6" alignment="TOP_CENTER">
+                                                    <Button fx:id="idotAddRowButton"
+                                                            text="+"
+                                                            prefWidth="35"/>
+                                                    <Button fx:id="idotRemoveRowButton"
+                                                            text="-"
+                                                            prefWidth="35"/>
+                                                </VBox>
+                                            </HBox>
+                                        </content>
+                                    </TitledPane>
+                                </panes>
+                            </Accordion>
+                            <!-- anndata is a standalone output option with no expandable settings. -->
+                            <CheckBox fx:id="anndataCheckBox"
+                                      text="%output.anndata.label"
+                                      selected="true">
+                                <VBox.margin>
+                                    <Insets top="8" right="0" bottom="8" left="24"/>
+                                </VBox.margin>
+                            </CheckBox>
+                        </VBox>
+                        <Region prefWidth="20"/>
+                    </HBox>
+                </content>
+            </TitledPane>
+            <!-- Shape Tessellator -->
+            <TitledPane text="%pane.shape_tessellator">
+                <content>
+                    <StackPane alignment="TOP_CENTER" styleClass="standard-padding tessellator-shell">
+                        <HBox spacing="26" alignment="TOP_CENTER" fillHeight="true">
+                            <VBox spacing="18"
+                                  alignment="TOP_LEFT"
+                                  prefWidth="280"
+                                  minWidth="250"
+                                  maxWidth="290"
+                                  maxHeight="Infinity"
+                                  styleClass="legend-container tessellator-control-card">
+                                <GridPane hgap="24"
+                                          vgap="10"
+                                          alignment="TOP_LEFT"
+                                          maxWidth="Infinity">
+                                    <columnConstraints>
+                                        <ColumnConstraints percentWidth="55" hgrow="ALWAYS" fillWidth="true"/>
+                                        <ColumnConstraints percentWidth="45" hgrow="ALWAYS" fillWidth="true"/>
+                                    </columnConstraints>
+                                    <RadioButton fx:id="tessellatorFitShapeRadio"
+                                                 text="%tessellator.partial.fit_shape"
+                                                 textOverrun="CLIP"
+                                                 GridPane.columnIndex="0"
+                                                 GridPane.rowIndex="0">
+                                        <toggleGroup>
+                                            <ToggleGroup fx:id="tessellatorPartialModeToggleGroup"/>
+                                        </toggleGroup>
+                                    </RadioButton>
+                                    <CheckBox fx:id="tessellatorHideGridCheckBox"
+                                              text="%tessellator.hide_grid"
+                                              selected="false"
+                                              GridPane.columnIndex="1"
+                                              GridPane.rowIndex="0"/>
+                                    <RadioButton fx:id="tessellatorAddPartialRadio"
+                                                 selected="true"
+                                                 toggleGroup="$tessellatorPartialModeToggleGroup"
+                                                 text="%tessellator.partial.add_partial"
+                                                 textOverrun="CLIP"
+                                                 GridPane.columnIndex="0"
+                                                 GridPane.rowIndex="1"/>
+                                    <CheckBox fx:id="tessellatorShowImageCheckBox"
+                                              text="%tessellator.show_image"
+                                              selected="false"
+                                              GridPane.columnIndex="1"
+                                              GridPane.rowIndex="1"/>
+                                    <RadioButton fx:id="tessellatorRemovePartialRadio"
+                                                 toggleGroup="$tessellatorPartialModeToggleGroup"
+                                                 text="%tessellator.partial.remove_partial"
+                                                 textOverrun="CLIP"
+                                                 GridPane.columnIndex="0"
+                                                 GridPane.rowIndex="2"/>
+                                    <CheckBox fx:id="tessellatorAssignClassesCheckBox"
+                                              text="%tessellator.assign_classes"
+                                              selected="false"
+                                              GridPane.columnIndex="1"
+                                              GridPane.rowIndex="2">
+                                        <tooltip>
+                                            <Tooltip text="%tessellator.assign_classes.tooltip"/>
+                                        </tooltip>
+                                    </CheckBox>
+                                </GridPane>
+                                <GridPane hgap="8"
+                                          prefWidth="280"
+                                          minWidth="280"
+                                          maxWidth="280">
+                                    <columnConstraints>
+                                        <ColumnConstraints percentWidth="50" hgrow="ALWAYS" fillWidth="true"/>
+                                        <ColumnConstraints percentWidth="50" hgrow="ALWAYS" fillWidth="true"/>
+                                    </columnConstraints>
+                                    <Button text="%tessellator.run"
+                                            onAction="#handleTessellateAnnotations"
+                                            maxWidth="Infinity"
+                                            minWidth="0"
+                                            GridPane.columnIndex="0"
+                                            styleClass="shape-tessellator-action-button"/>
+                                    <Button fx:id="generateFlippedImageButton"
+                                            text="%flipper.generate"
+                                            onAction="#handleGenerateFlippedImage"
+                                            maxWidth="Infinity"
+                                            minWidth="0"
+                                            GridPane.columnIndex="1"
+                                            styleClass="shape-tessellator-action-button"/>
+                                </GridPane>
+                                <VBox spacing="6"
+                                      alignment="TOP_LEFT"
+                                      minHeight="0"
+                                      maxWidth="Infinity"
+                                      maxHeight="Infinity"
+                                      VBox.vgrow="ALWAYS">
+                                    <Separator/>
+                                    <ListView fx:id="tessellatorClassListView"
+                                              minHeight="0"
+                                              prefHeight="220"
+                                              prefWidth="240"
+                                              maxWidth="Infinity"
+                                              maxHeight="Infinity"
+                                              VBox.vgrow="ALWAYS"
+                                              styleClass="slide-list-view tessellator-annotation-list"/>
+                                </VBox>
+                            </VBox>
+                            <VBox spacing="14"
+                                  alignment="TOP_CENTER"
+                                  prefWidth="360"
+                                  minWidth="320"
+                                  maxWidth="390"
+                                  styleClass="legend-container tessellator-control-card">
+                                <HBox spacing="26"
+                                      alignment="CENTER"
+                                      prefWidth="190"
+                                      minWidth="190"
+                                      maxWidth="190">
+                                    <VBox spacing="4" alignment="CENTER">
+                                        <Polygon points="12.0, 0.5, 2.0, 17.8, 22.0, 17.8"
+                                                 styleClass="tessellator-shape-small"/>
+                                        <RadioButton fx:id="tessellatorTriangleRadio"
+                                                     styleClass="tessellator-shape-radio">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="tessellatorShapeToggleGroup"/>
+                                            </toggleGroup>
+                                        </RadioButton>
+                                    </VBox>
+                                    <VBox spacing="4" alignment="CENTER">
+                                        <Rectangle width="20"
+                                                   height="20"
+                                                   styleClass="tessellator-shape-small"/>
+                                        <RadioButton fx:id="tessellatorSquareRadio"
+                                                     toggleGroup="$tessellatorShapeToggleGroup"
+                                                     styleClass="tessellator-shape-radio"/>
+                                    </VBox>
+                                    <VBox spacing="4" alignment="CENTER">
+                                        <Polygon points="22.0, 12.0, 17.0, 20.7, 7.0, 20.7, 2.0, 12.0, 7.0, 3.3, 17.0, 3.3"
+                                                 styleClass="tessellator-shape-small"/>
+                                        <RadioButton fx:id="tessellatorHexagonRadio"
+                                                     toggleGroup="$tessellatorShapeToggleGroup"
+                                                     styleClass="tessellator-shape-radio"
+                                                     selected="true"/>
+                                    </VBox>
+                                </HBox>
+                                <StackPane alignment="TOP_LEFT"
+                                           prefWidth="320"
+                                           minWidth="320"
+                                           maxWidth="320"
+                                           prefHeight="180"
+                                           minHeight="180"
+                                           maxHeight="180">
+                                    <Pane fx:id="tessellatorPreviewPane"
+                                          prefWidth="320"
+                                          minWidth="320"
+                                          maxWidth="320"
+                                          prefHeight="180"
+                                          minHeight="180"
+                                          maxHeight="180"
+                                          styleClass="tessellator-preview-pane"/>
+                                    <HBox alignment="CENTER"
+                                          spacing="4"
+                                          prefWidth="126"
+                                          minWidth="126"
+                                          maxWidth="126"
+                                          prefHeight="24"
+                                          minHeight="24"
+                                          maxHeight="24"
+                                          styleClass="tessellator-tile-area-shell"
+                                          StackPane.alignment="TOP_LEFT">
+                                        <StackPane.margin>
+                                            <Insets top="8.0" right="0.0" bottom="0.0" left="8.0"/>
+                                        </StackPane.margin>
+                                        <TextField fx:id="tessellatorTileAreaField"
+                                                   alignment="CENTER_RIGHT"
+                                                   promptText="%tessellator.tile_area.prompt"
+                                                   styleClass="tessellator-tile-area-field"/>
+                                        <Label text="%tessellator.tile_area.label"
+                                               mouseTransparent="true"
+                                               styleClass="tessellator-inline-suffix"/>
+                                    </HBox>
+                                </StackPane>
+                                <AnchorPane prefWidth="320"
+                                            minWidth="320"
+                                            maxWidth="320"
+                                            prefHeight="180"
+                                            minHeight="180"
+                                            maxHeight="180">
+                                    <Pane fx:id="tessellatorSlidePreviewPane"
+                                          prefWidth="320"
+                                          minWidth="320"
+                                          maxWidth="320"
+                                          prefHeight="180"
+                                          minHeight="180"
+                                          maxHeight="180"
+                                          styleClass="tessellator-slide-preview-pane"
+                                          AnchorPane.topAnchor="0.0"
+                                          AnchorPane.rightAnchor="0.0"
+                                          AnchorPane.bottomAnchor="0.0"
+                                          AnchorPane.leftAnchor="0.0"/>
+                                    <HBox spacing="4"
+                                          alignment="CENTER_RIGHT"
+                                          AnchorPane.rightAnchor="8.0"
+                                          AnchorPane.bottomAnchor="8.0">
+                                        <ToggleButton fx:id="flipImageVerticalButton"
+                                                      focusTraversable="false"
+                                                      contentDisplay="GRAPHIC_ONLY"
+                                                      styleClass="flip-axis-button">
+                                            <tooltip>
+                                                <Tooltip text="%flipper.flip_vertical"/>
+                                            </tooltip>
+                                            <graphic>
+                                                <Group>
+                                                    <Rectangle x="4.0"
+                                                               y="3.0"
+                                                               width="14.0"
+                                                               height="4.0"
+                                                               arcWidth="1.6"
+                                                               arcHeight="1.6"
+                                                               styleClass="flip-axis-icon-solid"/>
+                                                    <Rectangle x="4.0"
+                                                               y="10.0"
+                                                               width="14.0"
+                                                               height="7.0"
+                                                               arcWidth="1.6"
+                                                               arcHeight="1.6"
+                                                               styleClass="flip-axis-icon-outline"/>
+                                                </Group>
+                                            </graphic>
+                                        </ToggleButton>
+                                        <ToggleButton fx:id="flipImageHorizontalButton"
+                                                      focusTraversable="false"
+                                                      contentDisplay="GRAPHIC_ONLY"
+                                                      styleClass="flip-axis-button">
+                                            <tooltip>
+                                                <Tooltip text="%flipper.flip_horizontal"/>
+                                            </tooltip>
+                                            <graphic>
+                                                <Group>
+                                                    <Rectangle x="3.0"
+                                                               y="4.0"
+                                                               width="4.0"
+                                                               height="14.0"
+                                                               arcWidth="1.6"
+                                                               arcHeight="1.6"
+                                                               styleClass="flip-axis-icon-solid"/>
+                                                    <Rectangle x="10.0"
+                                                               y="4.0"
+                                                               width="7.0"
+                                                               height="14.0"
+                                                               arcWidth="1.6"
+                                                               arcHeight="1.6"
+                                                               styleClass="flip-axis-icon-outline"/>
+                                                </Group>
+                                            </graphic>
+                                        </ToggleButton>
+                                    </HBox>
+                                </AnchorPane>
+                            </VBox>
+                        </HBox>
+                    </StackPane>
+                </content>
+            </TitledPane>
+            <!-- Plate Designer -->
+            <TitledPane fx:id="platesPane" text="%pane.plate_designer">
+                <content>
+                    <StackPane alignment="TOP_CENTER" styleClass="standard-padding">
+                        <GridPane fx:id="plateDesignerGrid"
+                                  hgap="0"
+                                  vgap="8"
+                                  alignment="TOP_CENTER">
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="150" prefWidth="150" maxWidth="150" hgrow="NEVER"/>
+                                <ColumnConstraints minWidth="12" prefWidth="12" maxWidth="12" hgrow="NEVER"/>
+                                <ColumnConstraints hgrow="ALWAYS" fillWidth="true"/>
+                                <ColumnConstraints minWidth="0" prefWidth="0" maxWidth="0" hgrow="NEVER"/>
+                                <ColumnConstraints minWidth="230" prefWidth="230" maxWidth="230" hgrow="NEVER"/>
+                            </columnConstraints>
+                            <VBox spacing="3"
+                                  alignment="CENTER"
+                                  GridPane.columnIndex="2"
+                                  GridPane.rowIndex="0">
+                                <HBox spacing="8" alignment="CENTER">
+                                    <Label text="%plate.rows"/>
+                                    <TextField fx:id="plateRows" prefWidth="50"/>
+                                    <Label text="%plate.columns"/>
+                                    <TextField fx:id="plateCols" prefWidth="50"/>
+                                </HBox>
+                                <Label fx:id="wellCountLabel"
+                                       styleClass="plate-well-count-label"/>
+                            </VBox>
+                            <VBox fx:id="plateFormatMenu"
+                                  spacing="8"
+                                  alignment="TOP_RIGHT"
+                                  prefWidth="150"
+                                  minWidth="150"
+                                  maxWidth="150"
+                                  GridPane.columnIndex="0"
+                                  GridPane.rowIndex="1"
+                                  GridPane.halignment="RIGHT"
+                                  GridPane.valignment="TOP"
+                                  styleClass="legend-container plate-format-selector">
+                                <RadioButton fx:id="wells96PlateRadio"
+                                             text="%plate.format.96"
+                                             nodeOrientation="RIGHT_TO_LEFT"
+                                             alignment="CENTER_RIGHT">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="plateFormatToggleGroup"/>
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton fx:id="wells384PlateRadio"
+                                             toggleGroup="$plateFormatToggleGroup"
+                                             text="%plate.format.384"
+                                             nodeOrientation="RIGHT_TO_LEFT"
+                                             alignment="CENTER_RIGHT"
+                                             selected="true"/>
+                                <RadioButton fx:id="wells1536PlateRadio"
+                                             toggleGroup="$plateFormatToggleGroup"
+                                             text="%plate.format.1536"
+                                             nodeOrientation="RIGHT_TO_LEFT"
+                                             alignment="CENTER_RIGHT"/>
+                                <RadioButton fx:id="customPlateRadio"
+                                             toggleGroup="$plateFormatToggleGroup"
+                                             text="%plate.format.custom"
+                                             nodeOrientation="RIGHT_TO_LEFT"
+                                             alignment="CENTER_RIGHT"/>
+                                 <Separator/>
+                                 <CheckBox fx:id="allAnnotationsCheckBox"
+                                           text="%plate.include_all"
+                                           nodeOrientation="RIGHT_TO_LEFT"
+                                           alignment="CENTER_RIGHT"
+                                           selected="false">
+                                     <tooltip>
+                                         <Tooltip text="%plate.include_all.tooltip"/>
+                                     </tooltip>
+                                 </CheckBox>
+                                 <CheckBox fx:id="poolClassCheckBox"
+                                           text="%plate.pool_classes"
+                                           nodeOrientation="RIGHT_TO_LEFT"
+                                           alignment="CENTER_RIGHT"
+                                           selected="true">
+                                     <tooltip>
+                                         <Tooltip text="%plate.pool_classes.tooltip"/>
+                                     </tooltip>
+                                 </CheckBox>
+                                 <CheckBox fx:id="uniquePlatesCheckBox"
+                                           text="%plate.unique_plates"
+                                           nodeOrientation="RIGHT_TO_LEFT"
+                                           alignment="CENTER_RIGHT"
+                                           selected="false">
+                                     <tooltip>
+                                         <Tooltip text="%plate.unique_plates.tooltip"/>
+                                     </tooltip>
+                                 </CheckBox>
+                                 <CheckBox fx:id="customLayoutCheckBox"
+                                           text="%plate.custom_layout"
+                                           nodeOrientation="RIGHT_TO_LEFT"
+                                           alignment="CENTER_RIGHT"
+                                           selected="false">
+                                     <tooltip>
+                                         <Tooltip text="%plate.custom_layout.tooltip"/>
+                                     </tooltip>
+                                 </CheckBox>
+                                 <CheckBox fx:id="mapImageToPlateCheckBox"
+                                           text="%plate.map_image_plate"
+                                           nodeOrientation="RIGHT_TO_LEFT"
+                                           alignment="CENTER_RIGHT"
+                                           selected="false">
+                                     <tooltip>
+                                        <Tooltip text="%plate.map_image_plate.tooltip"/>
+                                     </tooltip>
+                                 </CheckBox>
+                            </VBox>
+                            <VBox spacing="6"
+                                  alignment="TOP_CENTER"
+                                  minWidth="0"
+                                  maxWidth="Infinity"
+                                  maxHeight="Infinity"
+                                  GridPane.hgrow="ALWAYS"
+                                  GridPane.vgrow="ALWAYS"
+                                  GridPane.columnIndex="2"
+                                  GridPane.rowIndex="1"
+                                  GridPane.valignment="TOP">
+                                <ScrollPane fx:id="plateScrollPane"
+                                            fitToWidth="false"
+                                            fitToHeight="false"
+                                            pannable="true"
+                                            hbarPolicy="AS_NEEDED"
+                                            vbarPolicy="AS_NEEDED"
+                                            minHeight="0"
+                                            minWidth="0"
+                                            focusTraversable="false"
+                                            VBox.vgrow="ALWAYS"/>
+                                <VBox spacing="1">
+                                    <HBox fx:id="plateControlsRow"
+                                          spacing="12"
+                                          alignment="TOP_LEFT"
+                                          fillHeight="false">
+                                        <CheckBox fx:id="randomizeCheckBox"
+                                                  text="%plate.randomize_samples"
+                                                  selected="true">
+                                            <tooltip>
+                                                <Tooltip text="%plate.randomize_samples.tooltip"/>
+                                            </tooltip>
+                                        </CheckBox>
+                                        <StackPane alignment="TOP_LEFT">
+                                            <TextField fx:id="seedField"
+                                                       prefWidth="90"
+                                                       promptText="%plate.seed.prompt"/>
+                                            <Button fx:id="shuffleButton"
+                                                    focusTraversable="false"
+                                                    StackPane.alignment="CENTER_RIGHT"
+                                                    styleClass="seed-shuffle-button">
+                                                <graphic>
+                                                    <Text styleClass="fa-icon" text=""/>
+                                                </graphic>
+                                            </Button>
+                                        </StackPane>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <VBox spacing="0" alignment="TOP_CENTER">
+                                            <HBox spacing="10" alignment="CENTER">
+                                                <Button fx:id="prevPlateButton"
+                                                        styleClass="plate-nav-button">
+                                                    <graphic>
+                                                        <Label text="◀" styleClass="plate-nav-icon"/>
+                                                    </graphic>
+                                                </Button>
+                                                <Label fx:id="plateIndexLabel"
+                                                       text="%plate.index.initial"/>
+                                                <Button fx:id="nextPlateButton"
+                                                        styleClass="plate-nav-button">
+                                                    <graphic>
+                                                        <Label text="▶" styleClass="plate-nav-icon"/>
+                                                    </graphic>
+                                                </Button>
+                                            </HBox>
+                                            <HBox spacing="4" alignment="CENTER">
+                                                <Button fx:id="removePlateButton"
+                                                        styleClass="plate-nav-button">
+                                                    <graphic>
+                                                        <Label text="-" styleClass="plate-nav-icon"/>
+                                                    </graphic>
+                                                </Button>
+                                                <Button fx:id="resetPlateCountButton"
+                                                        styleClass="plate-nav-button">
+                                                    <tooltip>
+                                                        <Tooltip text="%plate.reset_count.tooltip"/>
+                                                    </tooltip>
+                                                    <graphic>
+                                                        <SVGPath content="M12,4 V1 L8,5 L12,9 V6 C15.31,6 18,8.69 18,12 C18,13.01 17.75,13.97 17.3,14.8 L18.76,16.26 C19.54,15.03 20,13.57 20,12 C20,7.58 16.42,4 12,4 Z M6.7,9.2 L5.24,7.74 C4.46,8.97 4,10.43 4,12 C4,16.42 7.58,20 12,20 V23 L16,19 L12,15 V18 C8.69,18 6,15.31 6,12 C6,10.99 6.25,10.03 6.7,9.2 Z"
+                                                                 scaleX="0.7"
+                                                                 scaleY="0.7"
+                                                                 styleClass="plate-nav-reset-icon"/>
+                                                    </graphic>
+                                                </Button>
+                                                <Button fx:id="addPlateButton"
+                                                        styleClass="plate-nav-button">
+                                                    <graphic>
+                                                        <Label text="+" styleClass="plate-nav-icon"/>
+                                                    </graphic>
+                                                </Button>
+                                            </HBox>
+                                        </VBox>
+                                    </HBox>
+                                </VBox>
+                            </VBox>
+                            <!-- Legends -->
+                            <VBox fx:id="plateLegendMenu"
+                                  spacing="6"
+                                  prefWidth="230"
+                                  minWidth="230"
+                                  maxWidth="230"
+                                  GridPane.columnIndex="4"
+                                  GridPane.rowIndex="1"
+                                  GridPane.halignment="LEFT"
+                                  GridPane.valignment="TOP"
+                                  styleClass="legend-container">
+                                <HBox spacing="6" alignment="CENTER_LEFT">
+                                    <Pane fx:id="legendSample"/>
+                                    <Label text="%legend.samples"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label fx:id="legendSamplesCount"
+                                           styleClass="legend-count"/>
+                                </HBox>
+                                <HBox spacing="6" alignment="CENTER_LEFT">
+                                    <Pane fx:id="legendUnused"/>
+                                    <Label text="%legend.available"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label fx:id="legendUnusedCount"
+                                           styleClass="legend-count"/>
+                                </HBox>
+                                <HBox spacing="6" alignment="CENTER_LEFT">
+                                    <Pane fx:id="legendExcluded">
+                                        <Line startX="0" startY="0"
+                                              endX="14" endY="14"
+                                              stroke="red"
+                                              strokeWidth="1.5"/>
+                                    </Pane>
+                                    <Label text="%legend.unavailable"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label fx:id="legendExcludedCount"
+                                           styleClass="legend-count"/>
+                                </HBox>
+                                <HBox spacing="6" alignment="CENTER_LEFT">
+                                    <Pane fx:id="legendNegative">
+                                        <Circle centerX="7" centerY="7"
+                                                radius="2.5"
+                                                fill="red"/>
+                                    </Pane>
+                                    <Label text="%legend.negative_controls"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <TextField fx:id="negativeControlsField"
+                                               minWidth="36"
+                                               prefWidth="60"
+                                               alignment="CENTER_RIGHT"
+                                               promptText="%common.zero"/>
+                                </HBox>
+                                <!-- Slide list -->
+                                <Separator />
+                                <ScrollPane fx:id="slideScrollPane"
+                                            fitToWidth="true"
+                                            minHeight="0"
+                                            prefHeight="300"
+                                            styleClass="slide-scroll-pane">
+                                    <content>
+                                        <VBox fx:id="slideListBox"
+                                              spacing="1"
+                                              styleClass="slide-list-container"/>
+                                    </content>
+                                </ScrollPane>
+                            </VBox>
+                        </GridPane>
+                    </StackPane>
+                </content>
+            </TitledPane>
+        </panes>
+    </Accordion>
+</VBox>
