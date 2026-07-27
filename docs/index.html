@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    http-equiv="refresh"
+    content="0; url=assets/guides/code/user_guide.html"
+  >
+  <title>Opening the ShapeX User Guide</title>
+  <script>
+    const guideUrl = new URL("assets/guides/code/user_guide.html", window.location.href);
+    guideUrl.search = window.location.search;
+    guideUrl.hash = window.location.hash;
+    window.location.replace(guideUrl);
+  </script>
+</head>
+<body>
+  <p>
+    Opening the
+    <a href="assets/guides/code/user_guide.html">ShapeX User Guide</a>…
+  </p>
+</body>
+</html>

@@ -1,0 +1,3183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive user guide for the ShapeX QuPath extension.">
+  <title>ShapeX User Guide</title>
+  <link rel="stylesheet" href="interactive_guide.css">
+  <script src="interactive_guide.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to the guide</a>
+
+  <header class="site-header">
+    <a class="brand" href="user_guide.html" aria-label="ShapeX user guide home">Shape<span class="brand-accent">X</span></a>
+    <nav aria-label="Guide links">
+      <a href="https://github.com/Schoof-Lab/ShapeX">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">ShapeX user guide</p>
+      <h1 id="page-title">Explore ShapeX</h1>
+      <p class="hero-copy">
+        Use the interactive guide below to install ShapeX and explore a typical workflow.
+        Hover over or select the controls to see where they appear in ShapeX,
+        understand what they do, and follow the process from image annotations to generated outputs.
+      </p>
+    </section>
+
+    <section id="interactive-guide" class="interactive-guide" aria-labelledby="guide-heading">
+      <div class="guide-intro">
+        <p class="eyebrow">ShapeX walkthrough</p>
+        <h2 id="guide-heading">User guide</h2>
+      </div>
+
+      <div class="guide-tabs" role="tablist" aria-label="ShapeX user guide sections">
+        <button
+          class="guide-tab"
+          id="tab-installation"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-installation"
+          tabindex="0"
+        >Installation</button>
+        <button
+          class="guide-tab"
+          id="tab-workflow"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-workflow"
+          tabindex="-1"
+        >Workflow</button>
+        <button
+          class="guide-tab"
+          id="tab-main-window"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-main-window"
+          tabindex="-1"
+        >Main window</button>
+        <button
+          class="guide-tab"
+          id="tab-outputs"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-outputs"
+          tabindex="-1"
+        >Outputs</button>
+        <button
+          class="guide-tab"
+          id="tab-shape-tessellator"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-shape-tessellator"
+          tabindex="-1"
+        >Shape Tessellator</button>
+        <button
+          class="guide-tab"
+          id="tab-plate-designer"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-plate-designer"
+          tabindex="-1"
+        >Plate Designer</button>
+      </div>
+
+      <div
+        class="tab-panel installation-panel"
+        id="panel-installation"
+        role="tabpanel"
+        aria-labelledby="tab-installation"
+        tabindex="0"
+      >
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Getting started</p>
+            <h3>Install ShapeX in QuPath</h3>
+          </div>
+        </div>
+
+        <div class="installation-layout">
+          <ol id="installation-steps-overview" class="installation-steps">
+            <li class="installation-step-with-detail">
+              <button
+                class="installation-detail-trigger"
+                type="button"
+                aria-controls="installation-catalog-detail installation-catalog-preview"
+                aria-expanded="false"
+              >
+                <span class="step-number">1</span>
+                <span class="installation-step-copy">
+                  <strong>Add the extension catalog</strong>
+                  <span>QuPath installs and manages extensions through extension catalogs.<br>ShapeX is available through the CDL catalog.</span>
+                </span>
+                <span class="installation-detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
+            </li>
+            <li>
+              <span class="step-number">2</span>
+              <div>
+                <strong>Install ShapeX</strong>
+                <p>Open the CDL catalog and install ShapeX.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-number">3</span>
+              <div>
+                <strong>Restart QuPath</strong>
+                <p>Depending on your system, you may need to restart QuPath after installing ShapeX.</p>
+              </div>
+            </li>
+          </ol>
+
+          <div id="installation-catalog-detail" class="installation-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-installation-detail-back>
+                <span aria-hidden="true">&#8592;</span> Back
+              </button>
+              <strong>Add the extension catalog</strong>
+            </div>
+            <ol class="installation-detail-steps">
+              <li>
+                <button
+                  type="button"
+                  class="installation-detail-card is-active"
+                  data-installation-catalog-state="manager"
+                  aria-pressed="true"
+                >
+                  <span class="step-number">1</span>
+                  <span>
+                    <strong>Open the catalog manager</strong>
+                    <span>Open QuPath's Extension Manager and select <b>Manage extension catalogs</b>.</span>
+                  </span>
+                </button>
+              </li>
+              <li class="installation-catalog-step">
+                <button
+                  type="button"
+                  class="installation-detail-card"
+                  data-installation-catalog-state="catalog"
+                  aria-pressed="false"
+                >
+                  <span class="step-number">2</span>
+                  <span>
+                    <strong>Add the CDL catalog</strong>
+                    <span>Paste the CDL catalog URL into the field and select <b>Add</b>.</span>
+                  </span>
+                </button>
+                <div class="installation-copy-action" data-installation-copy-action hidden>
+                  <button
+                    class="copy-link-button"
+                    type="button"
+                    data-copy-catalog-url
+                    data-copy-value="https://github.com/Schoof-Lab/qupath-cdl-catalog"
+                  >Copy catalog link</button>
+                  <span
+                    class="visually-hidden"
+                    role="status"
+                    aria-live="polite"
+                    data-copy-catalog-status
+                  ></span>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <div class="installation-catalog-column">
+            <p class="installation-requirement">ShapeX requires QuPath 0.7.0 or newer.</p>
+            <aside id="installation-catalog-card" class="installation-card" aria-label="QuPath website">
+              <p class="card-label">QuPath</p>
+              <h4>Learn more about QuPath</h4>
+              <p>ShapeX is built as an extension for QuPath. Visit the official website to learn more about the platform and its tools.</p>
+              <div class="installation-card-links">
+                <a class="qupath-link" href="https://qupath.github.io/">
+                  Visit the QuPath website
+                </a>
+              </div>
+            </aside>
+            <figure id="installation-catalog-preview" class="installation-preview" hidden>
+              <div class="installation-preview-stage">
+                <img
+                  id="installation-catalog-screenshot"
+                  src="../installation/catalog/guide_installation_catalog1.png"
+                  width="868"
+                  height="468"
+                  alt="QuPath's Extension Manager with the Manage extension catalogs button at the bottom."
+                >
+                <span
+                  class="installation-image-highlight installation-manager-highlight is-active"
+                  data-installation-highlight-state="manager"
+                  aria-hidden="true"
+                ></span>
+                <span
+                  class="installation-image-highlight installation-catalog-highlight"
+                  data-installation-highlight-state="catalog"
+                  aria-hidden="true"
+                ></span>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="tab-panel workflow-panel"
+        id="panel-workflow"
+        role="tabpanel"
+        aria-labelledby="tab-workflow"
+        tabindex="0"
+        hidden
+      >
+        <header class="workflow-hero">
+          <p class="eyebrow">The ShapeX workflow</p>
+          <h3>From image annotations to a practical spatial sampling plan</h3>
+          <p class="workflow-lead">
+            ShapeX is a QuPath extension for connecting regions identified in a digital image
+            with the physical samples collected from them. It brings annotation selection,
+            spatial subdivision, plate assignment, and output generation into one coordinated
+            workflow, so the path from image to well remains clear and reviewable.
+          </p>
+        </header>
+
+        <div class="workflow-introduction">
+          <article class="workflow-copy">
+            <p class="workflow-label">What ShapeX is for</p>
+            <h4>Keep spatial decisions connected from the image to the laboratory</h4>
+            <p>
+              Spatial experiments often begin with a visual decision: a researcher identifies
+              tissue, structures, phenotypes, or other regions of interest in an image. The next
+              steps are physical. Those regions must become samples, the samples must be assigned
+              to collection positions, and the resulting plan must be communicated to laboratory
+              instruments and downstream analysis tools. ShapeX is designed to make that
+              transition explicit rather than leaving it spread across screenshots, handwritten
+              notes, and separate spreadsheets.
+            </p>
+            <p>
+              The workflow starts with area annotations in a QuPath project. An annotation can be
+              used directly as one sample, grouped with related annotations, or divided into
+              smaller, regularly arranged regions. ShapeX then maps the
+              selected samples to wells and provides a visual plate preview before any files are
+              generated. This makes it possible to inspect how image-derived material will be
+              organized while the spatial origin of every sample is still available.
+            </p>
+          </article>
+
+          <aside class="workflow-callout" aria-label="How to use this guide">
+            <p class="workflow-label">How to use this guide</p>
+            <h4>Follow the workflow, then explore ShapeX</h4>
+            <p>
+              This section guides you through a typical ShapeX workflow, from annotating regions
+              in QuPath to reviewing the generated outputs. The other tabs contain interactive
+              previews of the ShapeX interface. Explore their controls to familiarize yourself
+              with the extension.
+            </p>
+          </aside>
+        </div>
+
+        <section class="workflow-path" aria-label="A typical journey">
+          <p class="workflow-label">A typical journey</p>
+          <ol class="workflow-step-list">
+            <li class="workflow-step">
+              <div class="workflow-step-content">
+                <h4>Annotating</h4>
+                <p class="workflow-placeholder">
+                  Using QuPath’s built-in annotation tools, mark your regions of interest,
+                  whether they are cells or other structures. ShapeX accepts all closed shapes.
+                  These are shapes the laser-microdissection system can follow in a single
+                  continuous track without stopping or moving to a new position. Shapes that are
+                  not closed are marked in QuPath as “Geometry” under the “ROI” key. During
+                  annotation processing, ShapeX will attempt to
+                  <a
+                    class="workflow-section-link"
+                    href="#workflow-geometry-handling"
+                  >handle geometries</a> but will request manual review when the result is
+                  ambiguous.
+                </p>
+                <p class="workflow-placeholder">
+                  For larger regions, ShapeX includes the
+                  <a
+                    class="workflow-tab-link"
+                    href="#panel-shape-tessellator"
+                    data-tab-target="tab-shape-tessellator"
+                  >Shape Tessellator</a>. This tool
+                  divides large annotations into smaller, regularly arranged regions, allowing
+                  you to control the size and number of samples generated from a single
+                  annotation. The resulting layout also supports spatial reconstruction of the
+                  original annotation after downstream analysis. In a laser-microdissection
+                  workflow, each tessellated region can be collected in its own well while
+                  retaining its link to its original spatial position. Molecular signatures can
+                  then be compared across the
+                  tessellated regions to identify spatial heterogeneity within the original
+                  annotation.
+                </p>
+              </div>
+            </li>
+            <li class="workflow-step">
+              <div class="workflow-step-content">
+                <h4>Adding calibration points</h4>
+                <p class="workflow-placeholder">
+                  The microscope needs three calibration points to align its internal coordinate
+                  system with the coordinate system used by QuPath. These points allow the
+                  microscope to determine how the imported annotations must be rotated,
+                  translated, and scaled to match its internal coordinates. QuPath provides two
+                  ways to create point annotations: single points and multipoints. To create them,
+                  select the tool represented by three circles arranged in a triangle to open the
+                  Points menu. ShapeX accepts either one multipoint annotation containing exactly three points
+                  or exactly three single-point annotations. If more than three single-point annotations are
+                  available, ShapeX asks you to select exactly three during export. The points do
+                  not need specific names. ShapeX marks images that are missing the required
+                  calibration points so that they can be identified and corrected before export.
+                </p>
+                <p class="workflow-placeholder">
+                  When
+                  <button
+                    class="workflow-guide-link accent-blue"
+                    type="button"
+                    data-instrument-guide="calibration-points"
+                    aria-haspopup="dialog"
+                    aria-controls="instrument-guide-modal"
+                  >placing calibration points</button>, consider their distribution and how easy
+                  they will be to locate on the microscope. Keep the points well separated and
+                  avoid arranging them in a straight line. When the points are close together,
+                  even small placement errors can reduce alignment accuracy. Spreading the
+                  points farther apart makes the alignment more reliable.
+                  Place the points so that they form a large triangle spanning the relevant tissue
+                  area. Choose distinctive landmarks that are easy to find on the microscope.
+                  Tissue crevices and corners often work well because they help you position the
+                  corresponding microscope points more precisely.
+                </p>
+              </div>
+            </li>
+            <li class="workflow-step">
+              <div class="workflow-step-content">
+                <h4>Designing your plates</h4>
+                <p class="workflow-placeholder">
+                  The
+                  <a
+                    class="workflow-tab-link"
+                    href="#panel-plate-designer"
+                    data-tab-target="tab-plate-designer"
+                  >Plate Designer</a> is the heart of ShapeX. It lets you create a plate layout tailored to your workflow
+                  and preview how samples will be assigned before exporting any files. You can
+                  choose a standard 96-, 384-, or 1536-well format, or define a custom plate by
+                  setting its number of rows and columns.
+                </p>
+                <p class="workflow-placeholder">
+                  After selecting the slides and annotations to include, you can pool samples by
+                  class, create separate plates for individual images, randomize assignments,
+                  reserve negative-control wells, mark wells as unavailable, or edit the layout
+                  manually. ShapeX distributes samples across additional plates when needed and
+                  lets you review each plate before export.
+                </p>
+              </div>
+            </li>
+            <li class="workflow-step">
+              <div class="workflow-step-content">
+                <h4>Choosing outputs</h4>
+                <p class="workflow-placeholder">
+                  Once your plate design is ready,
+                  <a
+                    class="workflow-tab-link"
+                    href="#panel-outputs"
+                    data-tab-target="tab-outputs"
+                  >Outputs</a> lets you choose what ShapeX should generate. Available outputs include
+                  laser-microdissection annotation files, plate overviews, liquid dispensing
+                  instructions, and AnnData files for downstream spatial analysis. Each output can
+                  be enabled independently, so you only generate the files needed for your
+                  workflow.
+                </p>
+                <p class="workflow-placeholder">
+                  Check your output settings, choose where the files should be saved, and run the
+                  export. Before writing any files, ShapeX checks the selected slides,
+                  plate assignments, required calibration points, and geometries that may need
+                  manual review. Always review the generated files before using them with
+                  laboratory equipment or downstream software.
+                </p>
+                <figure class="workflow-output-diagram">
+                  <img
+                    src="../workflow/guide_workflow_outputs.svg"
+                    width="1200"
+                    height="720"
+                    alt="ShapeX connected to four outputs: plate documentation, laser microdissection, liquid dispensing, and spatial data."
+                  >
+                </figure>
+              </div>
+            </li>
+            <li class="workflow-step">
+              <div class="workflow-step-content">
+                <h4>Reviewing and using your outputs</h4>
+                <p
+                  class="workflow-placeholder"
+                  id="workflow-geometry-handling"
+                >
+                  <a
+                    class="workflow-tab-link workflow-geometry-link"
+                    href="#panel-main-window"
+                    data-tab-target="tab-main-window"
+                    data-open-main-run-detail
+                  >Geometry handling.</a> Before generating any
+                  outputs, ShapeX checks the exported annotations for geometries that may
+                  need attention. It automatically handles small issues, but if an
+                  annotation still contains disconnected components, ShapeX asks whether to merge
+                  the components, keep them, skip the affected annotation, or review it manually.
+                  Choosing manual review pauses the export so that you can inspect the affected
+                  annotations before running it again.
+                </p>
+                <p class="workflow-placeholder">
+                  After a successful run, ShapeX creates an output folder in the selected
+                  location. By default, this is the QuPath project folder.
+                  The first export in that location is saved in a folder
+                  named <code>ShapeX</code>. If that folder already exists,
+                  later exports use the date and time followed by <code>_ShapeX</code>, for example
+                  <code>20260723_151759_ShapeX</code>, to prevent previous exports from being
+                  overwritten.
+                </p>
+                <p class="workflow-placeholder">
+                  Depending on what you select, ShapeX can create four types of output:
+                  <strong>laser-microdissection files</strong> for supported cutting systems,
+                  <strong>liquid-dispensing files</strong>,
+                  a <strong>plate overview</strong> that records the plate and well assignments,
+                  and an <strong>AnnData file</strong> containing annotation data for downstream
+                  analysis. ShapeX only creates the output types selected for the run.
+                  Instructions for using the instrument-specific files are available in the
+                  cards below.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section
+          class="instrument-specifics"
+          id="instrument-specifics"
+          aria-labelledby="instrument-specifics-heading"
+        >
+          <div class="workflow-section-heading">
+            <p class="workflow-label">Instrument specifics</p>
+            <h4 id="instrument-specifics-heading">Instrument guides and current support</h4>
+          </div>
+          <div
+            class="instrument-card-scroller"
+            role="region"
+            aria-label="Output and instrument-specific guides"
+            tabindex="0"
+          >
+            <button
+              class="instrument-card is-supported"
+              type="button"
+              data-instrument-guide="leica-lmd"
+              aria-haspopup="dialog"
+              aria-controls="instrument-guide-modal"
+            >
+              <span class="instrument-card-heading">
+                <span class="instrument-type">Laser microdissection</span>
+                <span class="instrument-status">Supported</span>
+              </span>
+              <span class="instrument-card-title">Leica LMD</span>
+              <span class="instrument-card-description">
+                ShapeX writes calibrated annotation geometry and collection-well positions to XML
+                files in the <code>xml</code> folder, organized by plate. Load the relevant XML
+                file into the Leica LMD software, then verify the calibration, cutting contours,
+                and assigned collection wells before starting the dissection.
+              </span>
+              <span class="instrument-card-action">Open guide <span aria-hidden="true">→</span></span>
+            </button>
+            <button
+              class="instrument-card is-supported"
+              type="button"
+              data-instrument-guide="anndata"
+              aria-haspopup="dialog"
+              aria-controls="instrument-guide-modal"
+            >
+              <span class="instrument-card-heading">
+                <span class="instrument-type">Spatial data</span>
+                <span class="instrument-status">Supported</span>
+              </span>
+              <span class="instrument-card-title">scverse anndata</span>
+              <span class="instrument-card-description">
+                ShapeX stores annotation geometry, measurements, spatial coordinates, metadata,
+                and plate assignments in one <code>.h5ad</code> file for downstream analysis.
+              </span>
+              <span class="instrument-card-action">Open guide <span aria-hidden="true">→</span></span>
+            </button>
+            <button
+              class="instrument-card is-supported accent-blue"
+              type="button"
+              data-instrument-guide="idot"
+              aria-haspopup="dialog"
+              aria-controls="instrument-guide-modal"
+            >
+              <span class="instrument-card-heading">
+                <span class="instrument-type">Liquid dispensing</span>
+                <span class="instrument-status">Supported</span>
+              </span>
+              <span class="instrument-card-title">Dispendix i.DOT</span>
+              <span class="instrument-card-description">
+                ShapeX creates a separate CSV file for each dispensing step and plate in the
+                <code>idot</code> folder. Import the files into the i.DOT software in the order
+                required by your protocol. Before dispensing, confirm the source and target plate
+                types, liquid names, volumes, and target wells.
+              </span>
+              <span class="instrument-card-action">Open guide <span aria-hidden="true">→</span></span>
+            </button>
+            <button
+              class="instrument-card is-supported accent-blue"
+              type="button"
+              data-instrument-guide="plate-overview"
+              aria-haspopup="dialog"
+              aria-controls="instrument-guide-modal"
+            >
+              <span class="instrument-card-heading">
+                <span class="instrument-type">Plate documentation</span>
+                <span class="instrument-status">Supported</span>
+              </span>
+              <span class="instrument-card-title">Plate overview</span>
+              <span class="instrument-card-description">
+                ShapeX creates a readable record of the plate layout, sample assignments,
+                annotation details, and processing settings in the <code>Overview</code> folder.
+              </span>
+              <span class="instrument-card-action">Open guide <span aria-hidden="true">→</span></span>
+            </button>
+            <button
+              class="instrument-card"
+              type="button"
+              data-instrument-guide="mmi-cellcut"
+              aria-haspopup="dialog"
+              aria-controls="instrument-guide-modal"
+            >
+              <span class="instrument-card-heading">
+                <span class="instrument-type">Laser microdissection</span>
+                <span class="instrument-status">Unavailable</span>
+              </span>
+              <span class="instrument-card-title">MMI CellCut</span>
+              <span class="instrument-card-description">
+                ShapeX does not currently generate files for MMI CellCut systems.
+              </span>
+              <span class="instrument-card-action">View support status <span aria-hidden="true">→</span></span>
+            </button>
+            <button
+              class="instrument-card"
+              type="button"
+              data-instrument-guide="laxco-accuva-cellect"
+              aria-haspopup="dialog"
+              aria-controls="instrument-guide-modal"
+            >
+              <span class="instrument-card-heading">
+                <span class="instrument-type">Laser microdissection</span>
+                <span class="instrument-status">Unavailable</span>
+              </span>
+              <span class="instrument-card-title">Laxco Accuva Cellect</span>
+              <span class="instrument-card-description">
+                ShapeX does not currently generate files for Laxco Accuva Cellect systems.
+              </span>
+              <span class="instrument-card-action">View support status <span aria-hidden="true">→</span></span>
+            </button>
+            <button
+              class="instrument-card"
+              type="button"
+              data-instrument-guide="zeiss-palm-microbeam"
+              aria-haspopup="dialog"
+              aria-controls="instrument-guide-modal"
+            >
+              <span class="instrument-card-heading">
+                <span class="instrument-type">Laser microdissection</span>
+                <span class="instrument-status">Unavailable</span>
+              </span>
+              <span class="instrument-card-title">ZEISS PALM MicroBeam</span>
+              <span class="instrument-card-description">
+                ShapeX does not currently generate files for ZEISS PALM MicroBeam systems.
+              </span>
+              <span class="instrument-card-action">View support status <span aria-hidden="true">→</span></span>
+            </button>
+            <button
+              class="instrument-card"
+              type="button"
+              data-instrument-guide="meteor-cosmosort"
+              aria-haspopup="dialog"
+              aria-controls="instrument-guide-modal"
+            >
+              <span class="instrument-card-heading">
+                <span class="instrument-type">Laser microdissection</span>
+                <span class="instrument-status">Unavailable</span>
+              </span>
+              <span class="instrument-card-title">Meteor Biotech CosmoSort</span>
+              <span class="instrument-card-description">
+                ShapeX does not currently generate files for Meteor Biotech CosmoSort systems.
+              </span>
+              <span class="instrument-card-action">View support status <span aria-hidden="true">→</span></span>
+            </button>
+            <button
+              class="instrument-card"
+              type="button"
+              data-instrument-guide="thermo-arcturus-lcm"
+              aria-haspopup="dialog"
+              aria-controls="instrument-guide-modal"
+            >
+              <span class="instrument-card-heading">
+                <span class="instrument-type">Laser microdissection</span>
+                <span class="instrument-status">Unavailable</span>
+              </span>
+              <span class="instrument-card-title">Thermo Fisher Arcturus LCM</span>
+              <span class="instrument-card-description">
+                ShapeX does not currently generate files for Thermo Fisher Arcturus LCM systems.
+              </span>
+              <span class="instrument-card-action">View support status <span aria-hidden="true">→</span></span>
+            </button>
+          </div>
+          <section
+            class="workflow-limitations"
+            id="workflow-limitations"
+            aria-labelledby="workflow-limitations-heading"
+          >
+            <span class="workflow-limitation-mark" aria-hidden="true">!</span>
+            <div>
+              <p class="workflow-label">Limitations</p>
+              <h4 id="workflow-limitations-heading">Current instrument support</h4>
+              <p>
+                ShapeX currently supports only laser-microdissection output for Leica LMD systems
+                and liquid-dispensing output for Dispendix i.DOT systems, but we would love to
+                add support for more systems. Each integration requires reliable information
+                about the system’s file formats and workflow. If there is an instrument, data
+                structure, or anything else you would like ShapeX to support, please reach out
+                to us on GitHub.
+              </p>
+              <p>
+                Community contributions are therefore highly appreciated. If you can share
+                file-format specifications, example files, or workflow documentation for another
+                system, please <a href="https://github.com/Schoof-Lab/ShapeX/issues">open a GitHub issue</a>
+                and tell us what you would like ShapeX to support.
+              </p>
+            </div>
+          </section>
+        </section>
+      </div>
+
+      <div
+        class="tab-panel"
+        id="panel-main-window"
+        role="tabpanel"
+        aria-labelledby="tab-main-window"
+        tabindex="0"
+        hidden
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Interactive overview</p>
+            <h3>Main window controls</h3>
+          </div>
+        </div>
+
+        <div class="guide-layout main-window-layout">
+          <figure class="screenshot-panel">
+            <div class="screenshot-stage" id="main-window-image">
+              <img
+                id="main-window-screenshot"
+                src="../main/guide_main.png"
+                width="1098"
+                height="307"
+                alt="The ShapeX main window with theme and guide buttons, Run controls, and the Outputs, Shape Tessellator, and Plate Designer sections."
+              >
+
+              <span id="highlight-1" class="hotspot main-overview-hotspot hotspot-1" data-highlight="1" aria-hidden="true"></span>
+              <span id="highlight-2" class="hotspot main-overview-hotspot hotspot-2" data-highlight="2" aria-hidden="true"></span>
+              <span id="highlight-3" class="hotspot main-overview-hotspot hotspot-3" data-highlight="3" aria-hidden="true"></span>
+              <span id="highlight-4" class="hotspot main-overview-hotspot hotspot-4" data-highlight="4" aria-hidden="true"></span>
+              <span id="highlight-5" class="hotspot main-overview-hotspot hotspot-5" data-highlight="5" aria-hidden="true"></span>
+              <span id="highlight-6" class="hotspot main-overview-hotspot hotspot-6 tab-navigation-hotspot" data-highlight="6" aria-hidden="true"></span>
+              <span id="highlight-7" class="hotspot main-overview-hotspot hotspot-7 tab-navigation-hotspot" data-highlight="7" aria-hidden="true"></span>
+              <span id="highlight-8" class="hotspot main-overview-hotspot hotspot-8 tab-navigation-hotspot" data-highlight="8" aria-hidden="true"></span>
+
+              <span id="main-theme-highlight-1" class="hotspot detail-hotspot main-theme-hotspot-1" data-detail-scope="main-theme-detail" data-highlight="main-theme-1" aria-hidden="true"></span>
+              <span id="main-theme-highlight-2" class="hotspot detail-hotspot main-theme-hotspot-2" data-detail-scope="main-theme-detail" data-highlight="main-theme-2" aria-hidden="true"></span>
+              <span id="main-theme-highlight-3" class="hotspot detail-hotspot main-theme-hotspot-3" data-detail-scope="main-theme-detail" data-highlight="main-theme-3" aria-hidden="true"></span>
+              <span id="main-theme-highlight-4" class="hotspot detail-hotspot main-theme-hotspot-4" data-detail-scope="main-theme-detail" data-highlight="main-theme-4" aria-hidden="true"></span>
+              <span id="main-theme-highlight-5" class="hotspot detail-hotspot main-theme-hotspot-5" data-detail-scope="main-theme-detail" data-highlight="main-theme-5" aria-hidden="true"></span>
+              <span id="main-theme-highlight-6" class="hotspot detail-hotspot main-theme-hotspot-6" data-detail-scope="main-theme-detail" data-highlight="main-theme-6" aria-hidden="true"></span>
+              <span id="main-theme-highlight-7" class="hotspot detail-hotspot main-theme-hotspot-7" data-detail-scope="main-theme-detail" data-highlight="main-theme-7" aria-hidden="true"></span>
+              <span id="main-theme-highlight-8" class="hotspot detail-hotspot main-theme-hotspot-8" data-detail-scope="main-theme-detail" data-highlight="main-theme-8" aria-hidden="true"></span>
+
+              <span
+                id="main-run-attention-highlight"
+                class="hotspot detail-hotspot main-run-attention-text-hotspot"
+                data-detail-scope="main-run-detail"
+                data-highlight="main-run-attention"
+                data-sequence-highlight="run-attention"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-merge-fill-highlight"
+                class="hotspot detail-hotspot main-run-merge-fill-hotspot"
+                data-detail-scope="main-run-detail"
+                data-highlight="main-run-merge-fill"
+                data-sequence-highlight="run-attention"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-skip-highlight"
+                class="hotspot detail-hotspot main-run-skip-hotspot"
+                data-detail-scope="main-run-detail"
+                data-highlight="main-run-skip"
+                data-sequence-highlight="run-attention"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-manual-highlight"
+                class="hotspot detail-hotspot main-run-manual-hotspot"
+                data-detail-scope="main-run-detail"
+                data-highlight="main-run-manual"
+                data-sequence-highlight="run-attention"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-add-fixes-highlight"
+                class="hotspot detail-hotspot main-run-add-fixes-hotspot"
+                data-detail-scope="main-run-detail"
+                data-highlight="main-run-add-fixes"
+                data-sequence-highlight="run-attention"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-continue-highlight"
+                class="hotspot detail-hotspot main-run-continue-hotspot"
+                data-detail-scope="main-run-detail"
+                data-highlight="main-run-continue"
+                data-sequence-highlight="run-attention"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="main-run-manual-holes-highlight"
+                class="hotspot detail-hotspot main-run-manual-annotation-1-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-tutorial-1"
+                data-sequence-control="run-manual-combined"
+                data-sequence-action="switch"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-manual-components-highlight"
+                class="hotspot detail-hotspot main-run-manual-annotation-2-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-tutorial-2"
+                data-sequence-control="run-manual-components"
+                data-sequence-action="switch"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="main-run-manual-list-highlight"
+                class="hotspot detail-hotspot main-run-manual-list-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-list"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-manual-preview-highlight"
+                class="hotspot detail-hotspot main-run-manual-preview-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-preview"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="main-run-manual-combined-repair-highlight"
+                class="hotspot detail-hotspot main-run-manual-combined-repair-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-tutorial-1"
+                data-sequence-highlight="run-manual-combined"
+                data-sequence-states="0 1 2 3"
+                data-sequence-control="run-manual-combined"
+                data-sequence-option-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-manual-combined-skip-highlight"
+                class="hotspot detail-hotspot main-run-manual-combined-skip-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-tutorial-1"
+                data-sequence-highlight="run-manual-combined"
+                data-sequence-states="0 1 2 3"
+                data-sequence-control="run-manual-combined"
+                data-sequence-option-state="2"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-manual-combined-image-highlight"
+                class="hotspot detail-hotspot main-run-manual-show-image-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-tutorial-1"
+                data-sequence-highlight="run-manual-combined"
+                data-sequence-states="0 1 2 3"
+                data-sequence-control="run-manual-combined"
+                data-sequence-action="toggle-image"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-manual-combined-continue-highlight"
+                class="hotspot detail-hotspot main-run-manual-dialog-continue-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-continue"
+                data-sequence-highlight="run-manual-combined"
+                data-sequence-states="0 1 2 3"
+                data-main-run-hotspot-target="main-run-completed-detail"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="main-run-manual-components-merge-highlight"
+                class="hotspot detail-hotspot main-run-manual-components-merge-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-tutorial-2"
+                data-sequence-highlight="run-manual-components"
+                data-sequence-states="0 1 2 3 4 5"
+                data-sequence-control="run-manual-components"
+                data-sequence-option-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-manual-components-keep-highlight"
+                class="hotspot detail-hotspot main-run-manual-components-keep-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-tutorial-2"
+                data-sequence-highlight="run-manual-components"
+                data-sequence-states="0 1 2 3 4 5"
+                data-sequence-control="run-manual-components"
+                data-sequence-option-state="2"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-manual-components-skip-highlight"
+                class="hotspot detail-hotspot main-run-manual-components-skip-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-tutorial-2"
+                data-sequence-highlight="run-manual-components"
+                data-sequence-states="0 1 2 3 4 5"
+                data-sequence-control="run-manual-components"
+                data-sequence-option-state="4"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-manual-components-image-highlight"
+                class="hotspot detail-hotspot main-run-manual-show-image-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-tutorial-2"
+                data-sequence-highlight="run-manual-components"
+                data-sequence-states="0 1 2 3 4 5"
+                data-sequence-control="run-manual-components"
+                data-sequence-action="toggle-image"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-manual-components-continue-highlight"
+                class="hotspot detail-hotspot main-run-manual-dialog-continue-hotspot"
+                data-detail-scope="main-run-manual-detail"
+                data-highlight="main-run-manual-continue"
+                data-sequence-highlight="run-manual-components"
+                data-sequence-states="0 1 2 3 4 5"
+                data-main-run-hotspot-target="main-run-completed-detail"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="main-run-completed-text-highlight"
+                class="hotspot detail-hotspot main-run-completed-text-hotspot"
+                data-detail-scope="main-run-completed-detail"
+                data-highlight="main-run-completed-text"
+                data-sequence-highlight="run-completed"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-completed-add-fixes-highlight"
+                class="hotspot detail-hotspot main-run-completed-add-fixes-hotspot"
+                data-detail-scope="main-run-completed-detail"
+                data-highlight="main-run-completed-add-fixes"
+                data-sequence-highlight="run-completed"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-completed-review-highlight"
+                class="hotspot detail-hotspot main-run-completed-review-hotspot"
+                data-detail-scope="main-run-completed-detail"
+                data-highlight="main-run-completed-review"
+                data-sequence-highlight="run-completed"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-completed-ok-highlight"
+                class="hotspot detail-hotspot main-run-completed-ok-hotspot"
+                data-detail-scope="main-run-completed-detail"
+                data-highlight="main-run-completed-ok"
+                data-sequence-highlight="run-completed"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="main-run-automatic-list-highlight"
+                class="hotspot detail-hotspot main-run-automatic-list-hotspot"
+                data-detail-scope="main-run-automatic-detail"
+                data-highlight="main-run-automatic-list"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-automatic-preview-highlight"
+                class="hotspot detail-hotspot main-run-automatic-preview-hotspot"
+                data-detail-scope="main-run-automatic-detail"
+                data-highlight="main-run-automatic-preview"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-automatic-filled-legend-highlight"
+                class="hotspot detail-hotspot main-run-automatic-filled-legend-hotspot"
+                data-detail-scope="main-run-automatic-detail"
+                data-highlight="main-run-automatic-filled"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-automatic-filled-preview-highlight"
+                class="hotspot detail-hotspot main-run-automatic-filled-preview-hotspot"
+                data-detail-scope="main-run-automatic-detail"
+                data-highlight="main-run-automatic-filled"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-automatic-removed-legend-highlight"
+                class="hotspot detail-hotspot main-run-automatic-removed-legend-hotspot"
+                data-detail-scope="main-run-automatic-detail"
+                data-highlight="main-run-automatic-removed"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-automatic-removed-preview-highlight"
+                class="hotspot detail-hotspot main-run-automatic-removed-preview-hotspot"
+                data-detail-scope="main-run-automatic-detail"
+                data-highlight="main-run-automatic-removed"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-automatic-show-image-highlight"
+                class="hotspot detail-hotspot main-run-automatic-show-image-hotspot"
+                data-detail-scope="main-run-automatic-detail"
+                data-highlight="main-run-automatic-show-image"
+                data-sequence-control="run-automatic-fixes"
+                data-sequence-action="toggle-image"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="main-run-automatic-ok-highlight"
+                class="hotspot detail-hotspot main-run-automatic-ok-hotspot"
+                data-detail-scope="main-run-automatic-detail"
+                data-highlight="main-run-automatic-ok"
+                aria-hidden="true"
+              ></span>
+            </div>
+          </figure>
+
+          <div class="main-control-panel">
+          <ol id="main-controls-overview" class="control-list" aria-label="Scrollable list of ShapeX controls" tabindex="0">
+            <li>
+              <button
+                type="button"
+                class="control-card has-detail"
+                data-control="1"
+                data-detail-target="main-theme-detail"
+                aria-controls="highlight-1 main-theme-detail"
+                aria-expanded="false"
+                aria-pressed="false"
+              >
+                <span class="number">1</span>
+                <span class="control-copy">
+                  <strong>Theme colors</strong>
+                  <span>Choose the primary and secondary colors used by the ShapeX interface.</span>
+                </span>
+                <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="control-card" data-control="2" aria-controls="highlight-2" aria-pressed="false">
+                <span class="number">2</span>
+                <span class="control-copy">
+                  <strong>User guide</strong>
+                  <span>This will take you…here—hello!</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="control-card" data-control="3" aria-controls="highlight-3" aria-pressed="false">
+                <span class="number">3</span>
+                <span class="control-copy">
+                  <strong>Window size</strong>
+                  <span>Switch between the standard and full-screen window sizes.</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card has-detail"
+                data-control="4"
+                data-detail-target="main-run-detail"
+                aria-controls="highlight-4 main-run-detail"
+                aria-expanded="false"
+                aria-pressed="false"
+              >
+                <span class="number">4</span>
+                <span class="control-copy">
+                  <strong>Run</strong>
+                  <span>Validate the current setup and create the selected output files.</span>
+                </span>
+                <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
+            </li>
+            <li>
+              <button type="button" class="control-card" data-control="5" aria-controls="highlight-5" aria-pressed="false">
+                <span class="number">5</span>
+                <span class="control-copy">
+                  <strong>Output directory</strong>
+                  <span>Choose where ShapeX should create its output folder.</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card tab-navigation-card"
+                data-control="6"
+                data-tab-target="tab-outputs"
+                aria-controls="highlight-6 panel-outputs"
+                aria-pressed="false"
+              >
+                <span class="number">6</span>
+                <span class="control-copy">
+                  <strong>Outputs</strong>
+                  <span>Open the Outputs guide.</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card tab-navigation-card"
+                data-control="7"
+                data-tab-target="tab-shape-tessellator"
+                aria-controls="highlight-7 panel-shape-tessellator"
+                aria-pressed="false"
+              >
+                <span class="number">7</span>
+                <span class="control-copy">
+                  <strong>Shape Tessellator</strong>
+                  <span>Open the Shape Tessellator guide.</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card tab-navigation-card"
+                data-control="8"
+                data-tab-target="tab-plate-designer"
+                aria-controls="highlight-8 panel-plate-designer"
+                aria-pressed="false"
+              >
+                <span class="number">8</span>
+                <span class="control-copy">
+                  <strong>Plate Designer</strong>
+                  <span>Open the Plate Designer guide.</span>
+                </span>
+              </button>
+            </li>
+          </ol>
+
+          <div id="main-theme-detail" class="control-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-main-detail-back="main-theme-detail">
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Theme colors</strong>
+            </div>
+
+            <ol class="control-list detail-control-list" aria-label="Scrollable list of theme color controls" tabindex="0">
+              <li>
+                <button type="button" class="control-card" data-control="main-theme-1" aria-controls="main-theme-highlight-1" aria-pressed="false">
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Color field</strong>
+                    <span>Choose the saturation and brightness by selecting a point in the color field.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="main-theme-2" aria-controls="main-theme-highlight-2" aria-pressed="false">
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Hue</strong>
+                    <span>Choose the base hue using the vertical color spectrum.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="main-theme-3" aria-controls="main-theme-highlight-3" aria-pressed="false">
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Color preview</strong>
+                    <span>Compare the current theme color with the newly selected color.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="main-theme-4" aria-controls="main-theme-highlight-4" aria-pressed="false">
+                  <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>Color values</strong>
+                    <span>Fine-tune the color using HSB, RGB, or web color values.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="main-theme-5" aria-controls="main-theme-highlight-5" aria-pressed="false">
+                  <span class="number">5</span>
+                  <span class="control-copy">
+                    <strong>Opacity</strong>
+                    <span>Adjust the transparency of the selected theme color.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="main-theme-6"
+                  data-theme-image-sequence
+                  aria-controls="main-theme-highlight-6"
+                  aria-pressed="false"
+                >
+                  <span class="number">6</span>
+                  <span class="control-copy">
+                    <strong>Theme color</strong>
+                    <span>Switch between editing the Primary and Secondary ShapeX colors.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Primary color</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="main-theme-7" aria-controls="main-theme-highlight-7" aria-pressed="false">
+                  <span class="number">7</span>
+                  <span class="control-copy">
+                    <strong>Reset</strong>
+                    <span>Restore the selected theme color to its default value.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-detail"
+                  data-control="main-theme-8"
+                  data-detail-close="main-theme-detail"
+                  aria-controls="main-theme-highlight-8 main-controls-overview"
+                  aria-pressed="false"
+                >
+                  <span class="number">8</span>
+                  <span class="control-copy">
+                    <strong>OK</strong>
+                    <span>Confirm the selected color and return to the Main window overview.</span>
+                  </span>
+                  <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div id="main-run-detail" class="control-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-main-detail-back="main-run-detail">
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Run pipeline</strong>
+            </div>
+
+            <ol class="control-list detail-control-list" aria-label="Scrollable list of Run pipeline dialogs" tabindex="0">
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-attention"
+                  data-image-sequence="run-attention"
+                  aria-controls="main-run-attention-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Geometry attention</strong>
+                    <span>If ShapeX detects larger geometry issues that cannot be fixed automatically, your attention is required before the run can continue.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-merge-fill"
+                  data-image-sequence="run-attention"
+                  aria-controls="main-run-merge-fill-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Merge components and fill holes</strong>
+                    <span>Join disconnected parts and fill holes so each affected annotation becomes one continuous geometry.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-skip"
+                  data-image-sequence="run-attention"
+                  aria-controls="main-run-skip-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Skip these annotations</strong>
+                    <span>Exclude all affected annotations from the generated outputs.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-detail"
+                  data-control="main-run-manual"
+                  data-main-run-target="main-run-manual-detail"
+                  aria-controls="main-run-manual-highlight main-run-manual-detail"
+                  aria-expanded="false"
+                  aria-pressed="false"
+                >
+                  <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>Manually decide</strong>
+                    <span>Review each affected annotation and choose its available repair or skip option separately.</span>
+                  </span>
+                  <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-add-fixes"
+                  data-image-sequence="run-attention"
+                  aria-controls="main-run-add-fixes-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">5</span>
+                  <span class="control-copy">
+                    <strong>Add fixes to QuPath</strong>
+                    <span>Apply the selected repairs to the corresponding annotations in QuPath. Generated outputs always use the repairs.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-detail"
+                  data-control="main-run-continue"
+                  data-main-run-target="main-run-completed-detail"
+                  aria-controls="main-run-continue-highlight main-run-completed-detail"
+                  aria-expanded="false"
+                  aria-pressed="false"
+                >
+                  <span class="number">6</span>
+                  <span class="control-copy">
+                    <strong>Continue</strong>
+                    <span>Confirm these choices and continue the run.</span>
+                  </span>
+                  <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div id="main-run-manual-detail" class="control-detail" data-main-run-panel hidden>
+            <div class="detail-toolbar">
+              <button
+                class="detail-back"
+                type="button"
+                data-main-run-panel-back="main-run-detail"
+              >
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Manually decide</strong>
+            </div>
+
+            <ol class="control-list detail-control-list" aria-label="Manual geometry review choices" tabindex="0">
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-manual-list"
+                  aria-controls="main-run-manual-list-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Annotations requiring attention</strong>
+                    <span>Lists the annotations that require a manual decision. Select an annotation to review it.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-manual-preview"
+                  aria-controls="main-run-manual-preview-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Annotation preview</strong>
+                    <span>Shows the selected annotation with the currently applied fix.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="main-run-manual-tutorial-1"
+                  data-image-sequence="run-manual-combined"
+                  aria-controls="main-window-screenshot"
+                  aria-pressed="false"
+                >
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Annotations with holes</strong>
+                    <span>If an annotation contains any holes, you can fill all holes and merge any disconnected components, or skip the annotation.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot" data-state-dot="0"></span>
+                    <span class="state-dot is-active" data-state-dot="1"></span>
+                    <span class="state-dot" data-state-dot="2"></span>
+                    <span class="state-dot" data-state-dot="3"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Repair selected, image hidden</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="main-run-manual-tutorial-2"
+                  data-image-sequence="run-manual-components"
+                  aria-controls="main-window-screenshot"
+                  aria-pressed="false"
+                >
+                  <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>Annotations with disconnected components</strong>
+                    <span class="control-option"><b>Merge all:</b> Combine the components into one annotation.</span>
+                    <span class="control-option"><b>Keep all:</b> Keep the components as separate annotations. Components from a pooled class remain assigned to the same well.</span>
+                    <span class="control-option"><b>Skip:</b> Exclude the annotation from the generated outputs.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                    <span class="state-dot" data-state-dot="2"></span>
+                    <span class="state-dot" data-state-dot="3"></span>
+                    <span class="state-dot" data-state-dot="4"></span>
+                    <span class="state-dot" data-state-dot="5"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Select to view</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-detail"
+                  data-control="main-run-manual-continue"
+                  data-main-run-target="main-run-completed-detail"
+                  aria-controls="main-run-manual-combined-continue-highlight main-run-manual-components-continue-highlight main-run-completed-detail"
+                  aria-expanded="false"
+                  aria-pressed="false"
+                >
+                  <span class="number">5</span>
+                  <span class="control-copy">
+                    <strong>Continue</strong>
+                    <span>Confirm the choices for all affected annotations and continue the run.</span>
+                  </span>
+                  <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div id="main-run-completed-detail" class="control-detail" data-main-run-panel hidden>
+            <div class="detail-toolbar">
+              <button
+                class="detail-back"
+                type="button"
+                data-main-run-panel-back="main-run-detail"
+              >
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Generation completed</strong>
+            </div>
+
+            <ol class="control-list detail-control-list" aria-label="Generation completed dialog" tabindex="0">
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-completed-text"
+                  data-image-sequence="run-completed"
+                  aria-controls="main-run-completed-text-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Generation completed</strong>
+                    <span>ShapeX confirms that the selected files were created and shows the output folder.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-completed-add-fixes"
+                  data-image-sequence="run-completed"
+                  aria-controls="main-run-completed-add-fixes-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Add automatic fixes to QuPath</strong>
+                    <span>Apply the automatic geometry corrections to their corresponding annotations in QuPath.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-detail"
+                  data-control="main-run-completed-review"
+                  data-main-run-target="main-run-automatic-detail"
+                  aria-controls="main-run-completed-review-highlight main-run-automatic-detail"
+                  aria-expanded="false"
+                  aria-pressed="false"
+                >
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Review automatic fixes</strong>
+                    <span>ShapeX automatically fills holes and removes disconnected components below its 1% area threshold. Open a detailed preview of these changes.</span>
+                  </span>
+                  <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-detail"
+                  data-control="main-run-completed-ok"
+                  data-detail-close="main-run-detail"
+                  aria-controls="main-run-completed-ok-highlight main-controls-overview"
+                  aria-pressed="false"
+                >
+                  <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>Finish execution</strong>
+                    <span>Return to the Main window.</span>
+                  </span>
+                  <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div id="main-run-automatic-detail" class="control-detail" data-main-run-panel hidden>
+            <div class="detail-toolbar">
+              <button
+                class="detail-back"
+                type="button"
+                data-main-run-panel-back="main-run-completed-detail"
+              >
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Review automatic fixes</strong>
+            </div>
+
+            <ol class="control-list detail-control-list" aria-label="Automatic geometry-fix review" tabindex="0">
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-automatic-list"
+                  aria-controls="main-run-automatic-list-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Fixed annotations</strong>
+                    <span>Lists the annotations that ShapeX fixed automatically. Select an annotation to review it.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-automatic-preview"
+                  aria-controls="main-run-automatic-preview-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Annotation preview</strong>
+                    <span>Shows the selected annotation with the automatic fix applied.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-automatic-filled"
+                  aria-controls="main-run-automatic-filled-legend-highlight main-run-automatic-filled-preview-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Filled areas</strong>
+                    <span>Green marks the regions that ShapeX filled automatically.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="main-run-automatic-removed"
+                  aria-controls="main-run-automatic-removed-legend-highlight main-run-automatic-removed-preview-highlight"
+                  aria-pressed="false"
+                >
+                  <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>Removed areas</strong>
+                    <span>Red marks the regions that ShapeX removed automatically.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="main-run-automatic-show-image"
+                  data-image-sequence="run-automatic-fixes"
+                  aria-controls="main-run-automatic-show-image-highlight main-window-screenshot"
+                  aria-pressed="false"
+                >
+                  <span class="number">5</span>
+                  <span class="control-copy">
+                    <strong>Show image</strong>
+                    <span>Switch between the geometry-only preview and the preview over the source image.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Source image hidden</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-detail"
+                  data-control="main-run-automatic-ok"
+                  data-main-run-back="main-run-completed-detail"
+                  aria-controls="main-run-automatic-ok-highlight main-run-completed-detail"
+                  aria-pressed="false"
+                >
+                  <span class="number">6</span>
+                  <span class="control-copy">
+                    <strong>OK</strong>
+                    <span>Close the review and return to the Generation completed dialog.</span>
+                  </span>
+                  <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+                </button>
+              </li>
+            </ol>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="tab-panel"
+        id="panel-plate-designer"
+        role="tabpanel"
+        aria-labelledby="tab-plate-designer"
+        tabindex="0"
+        hidden
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Interactive overview</p>
+            <h3>Plate Designer controls</h3>
+          </div>
+        </div>
+
+        <div class="guide-layout plate-designer-layout">
+          <figure class="screenshot-panel">
+            <div class="screenshot-stage" id="plate-designer-image">
+              <img
+                id="plate-designer-screenshot"
+                src="../platedesigner/guide_plate_designer.png"
+                width="1098"
+                height="872"
+                alt="The expanded ShapeX Plate Designer with plate settings, a well-assignment preview, image selection, and plate controls."
+              >
+
+              <span id="plate-highlight-1" class="hotspot plate-overview-hotspot plate-hotspot-1" data-highlight="plate-1" data-highlight-group="plate-dimensions" aria-hidden="true"></span>
+              <span id="plate-highlight-2" class="hotspot plate-overview-hotspot plate-hotspot-2" data-highlight="plate-1" data-highlight-group="plate-dimensions" aria-hidden="true"></span>
+              <span id="plate-highlight-mapping" class="hotspot plate-overview-hotspot plate-mapping-hotspot" data-highlight="plate-mapping" aria-hidden="true"></span>
+              <span id="plate-highlight-8" class="hotspot plate-overview-hotspot plate-hotspot-8" data-highlight="plate-8" aria-hidden="true"></span>
+              <span id="plate-highlight-9" class="hotspot plate-overview-hotspot plate-hotspot-9" data-highlight="plate-9" aria-hidden="true"></span>
+              <span id="plate-highlight-10" class="hotspot plate-overview-hotspot plate-hotspot-10" data-highlight="plate-10" aria-hidden="true"></span>
+              <span id="plate-highlight-11" class="hotspot plate-overview-hotspot plate-hotspot-11" data-highlight="plate-11" aria-hidden="true"></span>
+              <span id="plate-highlight-12" class="hotspot plate-overview-hotspot plate-hotspot-12" data-highlight="plate-12" aria-hidden="true"></span>
+              <span id="plate-tab-highlight-main" class="hotspot plate-overview-hotspot tab-navigation-hotspot plate-tab-hotspot-main" data-highlight="plate-tab-main" aria-hidden="true"></span>
+              <span id="plate-tab-highlight-outputs" class="hotspot plate-overview-hotspot tab-navigation-hotspot plate-tab-hotspot-outputs" data-highlight="plate-tab-outputs" aria-hidden="true"></span>
+              <span id="plate-tab-highlight-tessellator" class="hotspot plate-overview-hotspot tab-navigation-hotspot plate-tab-hotspot-tessellator" data-highlight="plate-tab-tessellator" aria-hidden="true"></span>
+
+              <span id="plate-dimensions-highlight-1" class="hotspot detail-hotspot plate-dimensions-hotspot-1" data-detail-scope="plate-dimensions-detail" data-highlight="plate-dimensions-1" aria-hidden="true"></span>
+              <span id="plate-dimensions-highlight-2" class="hotspot detail-hotspot plate-dimensions-hotspot-2" data-detail-scope="plate-dimensions-detail" data-highlight="plate-dimensions-2" aria-hidden="true"></span>
+              <span id="plate-dimensions-highlight-3" class="hotspot detail-hotspot plate-dimensions-hotspot-3" data-detail-scope="plate-dimensions-detail" data-highlight="plate-dimensions-3" aria-hidden="true"></span>
+
+              <span id="plate-mapping-highlight-1" class="hotspot detail-hotspot plate-hotspot-3" data-detail-scope="plate-mapping-detail" data-highlight="plate-mapping-1" aria-hidden="true"></span>
+              <span id="plate-mapping-highlight-2" class="hotspot detail-hotspot plate-hotspot-4" data-detail-scope="plate-mapping-detail" data-highlight="plate-mapping-2" aria-hidden="true"></span>
+              <span id="plate-mapping-highlight-3" class="hotspot detail-hotspot plate-hotspot-5" data-detail-scope="plate-mapping-detail" data-highlight="plate-mapping-3" aria-hidden="true"></span>
+              <span id="plate-mapping-highlight-4" class="hotspot detail-hotspot plate-hotspot-6" data-detail-scope="plate-mapping-detail" data-highlight="plate-mapping-4" aria-hidden="true"></span>
+              <span id="plate-mapping-highlight-5" class="hotspot detail-hotspot plate-hotspot-7" data-detail-scope="plate-mapping-detail" data-highlight="plate-mapping-5" aria-hidden="true"></span>
+
+              <span id="plate-preview-highlight-1" class="hotspot detail-hotspot plate-preview-hotspot-1" data-detail-scope="plate-preview-detail" data-highlight="plate-preview-1" aria-hidden="true"></span>
+              <span id="plate-preview-highlight-2" class="hotspot detail-hotspot plate-preview-hotspot-2" data-detail-scope="plate-preview-detail" data-highlight="plate-preview-2" aria-hidden="true"></span>
+              <span id="plate-preview-highlight-3" class="hotspot detail-hotspot plate-preview-hotspot-3" data-detail-scope="plate-preview-detail" data-highlight="plate-preview-3" aria-hidden="true"></span>
+
+              <span id="plate-legend-highlight-1" class="hotspot detail-hotspot plate-legend-hotspot-1" data-detail-scope="plate-legend-detail" data-highlight="plate-legend-1" aria-hidden="true"></span>
+              <span id="plate-legend-highlight-2" class="hotspot detail-hotspot plate-legend-hotspot-2" data-detail-scope="plate-legend-detail" data-highlight="plate-legend-2" aria-hidden="true"></span>
+              <span id="plate-legend-highlight-3" class="hotspot detail-hotspot plate-legend-hotspot-3" data-detail-scope="plate-legend-detail" data-highlight="plate-legend-3" aria-hidden="true"></span>
+              <span id="plate-legend-highlight-4" class="hotspot detail-hotspot plate-legend-hotspot-4" data-detail-scope="plate-legend-detail" data-highlight="plate-legend-4" aria-hidden="true"></span>
+
+              <span id="plate-slides-highlight-1" class="hotspot detail-hotspot plate-slides-hotspot-1" data-detail-scope="plate-slides-detail" data-highlight="plate-slides-1" aria-hidden="true"></span>
+              <span id="plate-slides-highlight-2" class="hotspot detail-hotspot plate-slides-hotspot-2" data-detail-scope="plate-slides-detail" data-highlight="plate-slides-2" aria-hidden="true"></span>
+              <span id="plate-slides-highlight-3" class="hotspot detail-hotspot plate-slides-hotspot-3" data-detail-scope="plate-slides-detail" data-highlight="plate-slides-3" aria-hidden="true"></span>
+
+              <span id="plate-randomize-highlight-1" class="hotspot detail-hotspot plate-randomize-hotspot-1" data-detail-scope="plate-randomize-detail" data-highlight="plate-randomize-1" aria-hidden="true"></span>
+              <span id="plate-randomize-highlight-2" class="hotspot detail-hotspot plate-randomize-hotspot-2" data-detail-scope="plate-randomize-detail" data-highlight="plate-randomize-2" aria-hidden="true"></span>
+              <span id="plate-randomize-highlight-3" class="hotspot detail-hotspot plate-randomize-hotspot-3" data-detail-scope="plate-randomize-detail" data-highlight="plate-randomize-3" aria-hidden="true"></span>
+
+              <span id="plate-navigation-highlight-1" class="hotspot detail-hotspot plate-navigation-hotspot-1" data-detail-scope="plate-navigation-detail" data-highlight="plate-navigation-1" aria-hidden="true"></span>
+              <span id="plate-navigation-highlight-2" class="hotspot detail-hotspot plate-navigation-hotspot-2" data-detail-scope="plate-navigation-detail" data-highlight="plate-navigation-2" aria-hidden="true"></span>
+              <span id="plate-navigation-highlight-3" class="hotspot detail-hotspot plate-navigation-hotspot-3" data-detail-scope="plate-navigation-detail" data-highlight="plate-navigation-3" aria-hidden="true"></span>
+              <span id="plate-navigation-highlight-4" class="hotspot detail-hotspot plate-navigation-hotspot-4" data-detail-scope="plate-navigation-detail" data-highlight="plate-navigation-4" aria-hidden="true"></span>
+              <span id="plate-navigation-highlight-5" class="hotspot detail-hotspot plate-navigation-hotspot-5" data-detail-scope="plate-navigation-detail" data-highlight="plate-navigation-5" aria-hidden="true"></span>
+              <span id="plate-navigation-highlight-6" class="hotspot detail-hotspot plate-navigation-hotspot-6" data-detail-scope="plate-navigation-detail" data-highlight="plate-navigation-6" aria-hidden="true"></span>
+            </div>
+          </figure>
+
+          <div class="plate-control-panel">
+          <ol id="plate-controls-overview" class="control-list plate-control-list" aria-label="Scrollable list of Plate Designer controls" tabindex="0">
+            <li>
+              <button
+                type="button"
+                class="control-card has-detail"
+                data-control="plate-1"
+                data-detail-target="plate-dimensions-detail"
+                aria-controls="plate-highlight-1 plate-highlight-2 plate-dimensions-detail"
+                aria-expanded="false"
+                aria-pressed="false"
+              >
+                <span class="number">1</span>
+                <span class="control-copy">
+                  <strong>Plate dimensions</strong>
+                  <span>Choose a standard plate format or set custom rows and columns.</span>
+                </span>
+                <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card has-detail"
+                data-control="plate-mapping"
+                data-detail-target="plate-mapping-detail"
+                aria-controls="plate-highlight-mapping plate-mapping-detail"
+                aria-expanded="false"
+                aria-pressed="false"
+              >
+                <span class="number">2</span>
+                <span class="control-copy">
+                  <strong>Plate mapping</strong>
+                  <span>Configure how annotations are grouped and mapped across plates.</span>
+                </span>
+                <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card has-detail"
+                data-control="plate-8"
+                data-detail-target="plate-preview-detail"
+                aria-controls="plate-highlight-8 plate-preview-detail"
+                aria-expanded="false"
+                aria-pressed="false"
+              >
+                <span class="number">3</span>
+                <span class="control-copy">
+                  <strong>Plate preview</strong>
+                  <span>Review sample, available, unavailable, and negative-control well assignments.</span>
+                </span>
+                <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card has-detail"
+                data-control="plate-9"
+                data-detail-target="plate-legend-detail"
+                aria-controls="plate-highlight-9 plate-legend-detail"
+                aria-expanded="false"
+                aria-pressed="false"
+              >
+                <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>Legend and controls</strong>
+                    <span>
+                      View the number of wells in each category and set how many should be reserved
+                      as negative controls.
+                    </span>
+                  </span>
+                <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card has-detail"
+                data-control="plate-10"
+                data-detail-target="plate-slides-detail"
+                aria-controls="plate-highlight-10 plate-slides-detail"
+                aria-expanded="false"
+                aria-pressed="false"
+              >
+                <span class="number">5</span>
+                <span class="control-copy">
+                  <strong>Images</strong>
+                  <span>Choose which project images contribute samples to the plate layout.</span>
+                </span>
+                <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card has-detail"
+                data-control="plate-11"
+                data-detail-target="plate-randomize-detail"
+                aria-controls="plate-highlight-11 plate-randomize-detail"
+                aria-expanded="false"
+                aria-pressed="false"
+              >
+                <span class="number">6</span>
+                  <span class="control-copy">
+                    <strong>Randomize Samples</strong>
+                    <span>
+                      Randomly assign samples to wells. Reuse the seed to reproduce the same
+                      layout.
+                    </span>
+                  </span>
+                <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card has-detail"
+                data-control="plate-12"
+                data-detail-target="plate-navigation-detail"
+                aria-controls="plate-highlight-12 plate-navigation-detail"
+                aria-expanded="false"
+                aria-pressed="false"
+              >
+                <span class="number">7</span>
+                <span class="control-copy">
+                  <strong>Plate navigation</strong>
+                  <span>Move between plates, add or remove plates, or reset to the minimum required count.</span>
+                </span>
+                <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card tab-navigation-card"
+                data-control="plate-tab-main"
+                data-tab-target="tab-main-window"
+                aria-controls="plate-tab-highlight-main panel-main-window"
+                aria-pressed="false"
+              >
+                <span class="number">8</span>
+                <span class="control-copy">
+                  <strong>Main window</strong>
+                  <span>Open the Main window guide.</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card tab-navigation-card"
+                data-control="plate-tab-outputs"
+                data-tab-target="tab-outputs"
+                aria-controls="plate-tab-highlight-outputs panel-outputs"
+                aria-pressed="false"
+              >
+                <span class="number">9</span>
+                <span class="control-copy">
+                  <strong>Outputs</strong>
+                  <span>Open the Outputs guide.</span>
+                </span>
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="control-card tab-navigation-card"
+                data-control="plate-tab-tessellator"
+                data-tab-target="tab-shape-tessellator"
+                aria-controls="plate-tab-highlight-tessellator panel-shape-tessellator"
+                aria-pressed="false"
+              >
+                <span class="number">10</span>
+                <span class="control-copy">
+                  <strong>Shape Tessellator</strong>
+                  <span>Open the Shape Tessellator guide.</span>
+                </span>
+              </button>
+            </li>
+          </ol>
+
+          <div id="plate-dimensions-detail" class="control-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-detail-back="plate-dimensions-detail">
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Plate dimensions</strong>
+            </div>
+
+            <ol class="control-list plate-control-list detail-control-list" aria-label="Scrollable list of plate dimension controls" tabindex="0">
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="plate-dimensions-1"
+                  data-image-sequence="plate-format"
+                  aria-controls="plate-dimensions-highlight-1"
+                  aria-pressed="false"
+                >
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Plate format</strong>
+                    <span>Choose a 96-, 384-, or 1536-well plate, or select Custom Wells.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                    <span class="state-dot" data-state-dot="2"></span>
+                    <span class="state-dot" data-state-dot="3"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">384-well plate</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-dimensions-2" aria-controls="plate-dimensions-highlight-2" aria-pressed="false">
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Rows and columns</strong>
+                    <span>Set the number of rows and columns used by a custom plate.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-dimensions-3" aria-controls="plate-dimensions-highlight-3" aria-pressed="false">
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Total wells</strong>
+                    <span>Shows the plate capacity calculated from the selected dimensions.</span>
+                  </span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div id="plate-mapping-detail" class="control-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-detail-back="plate-mapping-detail">
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Plate mapping</strong>
+            </div>
+
+            <ol class="control-list plate-control-list detail-control-list" aria-label="Scrollable list of plate mapping controls" tabindex="0">
+              <li>
+                <button type="button" class="control-card" data-control="plate-mapping-1" aria-controls="plate-mapping-highlight-1" aria-pressed="false">
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Include All</strong>
+                    <span>
+                      Unclassified annotations are excluded by default. Enable this option to
+                      include them alongside classified annotations.
+                    </span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-mapping-2" aria-controls="plate-mapping-highlight-2" aria-pressed="false">
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Pool classes</strong>
+                    <span>
+                      Enabled by default, this option groups annotations with the same class into
+                      one sample assignment.
+                    </span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="plate-mapping-3"
+                  aria-controls="plate-mapping-highlight-3"
+                  aria-pressed="false"
+                >
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Unique Plates</strong>
+                    <span>
+                      By default, negative-control and unavailable-well settings are applied to all
+                      plates. Enable this option to apply them only to the plate currently shown.
+                    </span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-mapping-4" aria-controls="plate-mapping-highlight-4" aria-pressed="false">
+                  <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>Custom Layout</strong>
+                    <span>Enable manual editing of well assignments in the plate preview.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-mapping-5" aria-controls="plate-mapping-highlight-5" aria-pressed="false">
+                  <span class="number">5</span>
+                  <span class="control-copy">
+                    <strong>Map Image-Plate</strong>
+                    <span>Create a separate plate for each selected image.</span>
+                  </span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div id="plate-preview-detail" class="control-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-detail-back="plate-preview-detail">
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Plate preview</strong>
+            </div>
+
+            <ol class="control-list plate-control-list detail-control-list" aria-label="Scrollable list of plate preview controls" tabindex="0">
+              <li>
+                <button type="button" class="control-card" data-control="plate-preview-1" aria-controls="plate-preview-highlight-1" aria-pressed="false">
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Column controls</strong>
+                    <span>Select a column number to toggle availability for every well in that column.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-preview-2" aria-controls="plate-preview-highlight-2" aria-pressed="false">
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Row controls</strong>
+                    <span>Select a row letter to toggle availability for every well in that row.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-preview-3" aria-controls="plate-preview-highlight-3" aria-pressed="false">
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Wells</strong>
+                    <span>Select individual wells to change their availability. Custom Layout also enables sample dragging and additional right-click actions.</span>
+                  </span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div id="plate-legend-detail" class="control-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-detail-back="plate-legend-detail">
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Legend and controls</strong>
+            </div>
+
+            <ol class="control-list plate-control-list detail-control-list" aria-label="Scrollable list of legend and control elements" tabindex="0">
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="plate-legend-1"
+                  data-image-sequence="plate-legend-samples"
+                  aria-controls="plate-legend-highlight-1"
+                  aria-pressed="false"
+                >
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Samples</strong>
+                    <span>Shows how many wells are assigned to samples. Colors distinguish their annotation classes.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                    <span class="state-dot" data-state-dot="2"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Image 1 of 3</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="plate-legend-2"
+                  data-image-sequence="plate-legend-available"
+                  aria-controls="plate-legend-highlight-2"
+                  aria-pressed="false"
+                >
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Available</strong>
+                    <span>Shows unassigned wells that remain available for samples.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Image 1 of 2</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-legend-3" aria-controls="plate-legend-highlight-3" aria-pressed="false">
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Unavailable</strong>
+                    <span>Shows wells that have been excluded from sample assignment.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="plate-legend-4"
+                  aria-controls="plate-legend-highlight-4"
+                  aria-pressed="false"
+                >
+                  <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>Negative Controls</strong>
+                    <span>Set the number of wells reserved as negative controls.</span>
+                  </span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div id="plate-slides-detail" class="control-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-detail-back="plate-slides-detail">
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Images</strong>
+            </div>
+
+            <ol class="control-list plate-control-list detail-control-list" aria-label="Scrollable list of image controls" tabindex="0">
+              <li>
+                <button type="button" class="control-card" data-control="plate-slides-1" aria-controls="plate-slides-highlight-1" aria-pressed="false">
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Check all</strong>
+                    <span>Select or clear every project image in one action.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="plate-slides-2"
+                  data-image-sequence="plate-slide-selection"
+                  aria-controls="plate-slides-highlight-2"
+                  aria-pressed="false"
+                >
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Image selection</strong>
+                    <span>Choose the project images whose annotations should be mapped to the plate.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Initial image selection</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-slides-3" aria-controls="plate-slides-highlight-3" aria-pressed="false">
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Calibration warning</strong>
+                    <span>Marks an image that does not yet contain three calibration points. Hover over the warning in ShapeX for the current count.</span>
+                  </span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div id="plate-randomize-detail" class="control-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-detail-back="plate-randomize-detail">
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Randomize Samples</strong>
+            </div>
+
+            <ol class="control-list plate-control-list detail-control-list" aria-label="Scrollable list of sample randomization controls" tabindex="0">
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="plate-randomize-1"
+                  data-image-sequence="plate-randomization"
+                  aria-controls="plate-randomize-highlight-1"
+                  aria-pressed="false"
+                >
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong data-state-title>Randomize Samples</strong>
+                    <span data-state-description>
+                      Shuffle sample-to-well assignments instead of placing samples in their
+                      original order.
+                    </span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Randomization enabled</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-randomize-2" aria-controls="plate-randomize-highlight-2" aria-pressed="false">
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Seed</strong>
+                    <span>Enter the same seed again to reproduce a randomized plate layout.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="plate-randomize-3"
+                  data-image-sequence="plate-new-seed"
+                  aria-controls="plate-randomize-highlight-3"
+                  aria-pressed="false"
+                >
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>New seed</strong>
+                    <span>Generate a different seed and immediately reshuffle the plate layout.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Original seed</span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div id="plate-navigation-detail" class="control-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-detail-back="plate-navigation-detail">
+                <span aria-hidden="true">&#8592;</span>
+                Back
+              </button>
+              <strong>Plate navigation</strong>
+            </div>
+
+            <ol class="control-list plate-control-list detail-control-list" aria-label="Scrollable list of plate navigation controls" tabindex="0">
+              <li>
+                <button type="button" class="control-card" data-control="plate-navigation-1" aria-controls="plate-navigation-highlight-1" aria-pressed="false">
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Previous plate</strong>
+                    <span>Show the previous plate in the set.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-navigation-2" aria-controls="plate-navigation-highlight-2" aria-pressed="false">
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Plate indicator</strong>
+                    <span>Shows the current plate number and the total number of plates.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-navigation-3" aria-controls="plate-navigation-highlight-3" aria-pressed="false">
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Next plate</strong>
+                    <span>Show the next plate in the set.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-navigation-4" aria-controls="plate-navigation-highlight-4" aria-pressed="false">
+                  <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>Remove plate</strong>
+                    <span>Remove the current plate when the layout permits it.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-navigation-5" aria-controls="plate-navigation-highlight-5" aria-pressed="false">
+                  <span class="number">5</span>
+                  <span class="control-copy">
+                    <strong>Reset plate count</strong>
+                    <span>Return to the minimum number of plates required for the current samples.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="plate-navigation-6" aria-controls="plate-navigation-highlight-6" aria-pressed="false">
+                  <span class="number">6</span>
+                  <span class="control-copy">
+                    <strong>Add plate</strong>
+                    <span>Add another plate when the layout permits it.</span>
+                  </span>
+                </button>
+              </li>
+            </ol>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="tab-panel"
+        id="panel-shape-tessellator"
+        role="tabpanel"
+        aria-labelledby="tab-shape-tessellator"
+        tabindex="0"
+        hidden
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Interactive overview</p>
+            <h3>Shape Tessellator controls</h3>
+          </div>
+        </div>
+
+        <div class="guide-layout tessellator-layout">
+          <figure class="screenshot-panel">
+            <div class="screenshot-stage" id="shape-tessellator-image">
+              <img
+                id="shape-tessellator-screenshot"
+                src="../shapetessellator/guide_shape_tessellator.png"
+                width="1098"
+                height="759"
+                alt="The expanded ShapeX Shape Tessellator with tessellation modes, display options, grid controls, previews, and annotation selection."
+              >
+
+              <span class="hotspot tessellator-overview-hotspot tess-options-overview-hotspot" data-highlight="tess-options" aria-hidden="true"></span>
+              <span class="hotspot tessellator-overview-hotspot tess-grid-overview-hotspot" data-highlight="tess-grid" aria-hidden="true"></span>
+              <span class="hotspot tessellator-overview-hotspot tess-run-hotspot" data-highlight="tess-run" aria-hidden="true"></span>
+              <span class="hotspot tessellator-overview-hotspot tess-flip-button-hotspot" data-highlight="tess-flip" data-highlight-group="tess-flip" aria-hidden="true"></span>
+              <span class="hotspot tessellator-overview-hotspot tess-flip-axis-hotspot" data-highlight="tess-flip" data-highlight-group="tess-flip" aria-hidden="true"></span>
+              <span class="hotspot tessellator-overview-hotspot tess-annotations-hotspot" data-highlight="tess-annotations" aria-hidden="true"></span>
+              <span id="tess-grid-preview-highlight" class="hotspot tessellator-overview-hotspot tess-preview-grid-hotspot" data-highlight="tess-grid-preview" aria-hidden="true"></span>
+              <span id="tess-image-preview-highlight" class="hotspot tessellator-overview-hotspot tess-preview-image-hotspot" data-highlight="tess-image-preview" aria-hidden="true"></span>
+              <span class="hotspot tessellator-overview-hotspot tab-navigation-hotspot tess-tab-hotspot-main" data-highlight="tess-tab-main" aria-hidden="true"></span>
+              <span class="hotspot tessellator-overview-hotspot tab-navigation-hotspot tess-tab-hotspot-outputs" data-highlight="tess-tab-outputs" aria-hidden="true"></span>
+              <span class="hotspot tessellator-overview-hotspot tab-navigation-hotspot tess-tab-hotspot-plate" data-highlight="tess-tab-plate" aria-hidden="true"></span>
+
+              <span class="hotspot detail-hotspot sequence-option-hotspot tess-mode-fit-hotspot" data-detail-scope="tess-options-detail" data-highlight="tess-mode" data-sequence-highlight="tess-mode" data-sequence-state="0" data-sequence-control="tess-mode" data-sequence-target-state="0" aria-hidden="true"></span>
+              <span class="hotspot detail-hotspot sequence-option-hotspot tess-mode-add-hotspot" data-detail-scope="tess-options-detail" data-highlight="tess-mode" data-sequence-highlight="tess-mode" data-sequence-state="1" data-sequence-control="tess-mode" data-sequence-target-state="1" aria-hidden="true"></span>
+              <span class="hotspot detail-hotspot sequence-option-hotspot tess-mode-remove-hotspot" data-detail-scope="tess-options-detail" data-highlight="tess-mode" data-sequence-highlight="tess-mode" data-sequence-state="2" data-sequence-control="tess-mode" data-sequence-target-state="2" aria-hidden="true"></span>
+
+              <span class="hotspot detail-hotspot tess-display-hide-hotspot" data-detail-scope="tess-options-detail" data-highlight="tess-display-hide" aria-hidden="true"></span>
+              <span class="hotspot detail-hotspot tess-display-image-hotspot" data-detail-scope="tess-options-detail" data-highlight="tess-display-image" aria-hidden="true"></span>
+              <span class="hotspot detail-hotspot tess-display-classes-hotspot" data-detail-scope="tess-options-detail" data-highlight="tess-display-classes" aria-hidden="true"></span>
+
+              <span class="hotspot detail-hotspot tess-preview-area-hotspot" data-detail-scope="tess-preview-detail" data-highlight="tess-preview-area" aria-hidden="true"></span>
+              <span class="hotspot detail-hotspot tess-preview-count-hotspot" data-detail-scope="tess-preview-detail" data-highlight="tess-preview-count" data-sequence-highlight="tess-preview-availability" data-sequence-state="0" aria-hidden="true"></span>
+              <span class="hotspot detail-hotspot tess-preview-grid-hotspot" data-detail-scope="tess-preview-detail" data-highlight="tess-preview-state" data-sequence-highlight="tess-preview-availability" data-sequence-state="0" data-sequence-control="tess-preview-availability" data-sequence-target-state="1" aria-hidden="true"></span>
+              <span class="hotspot detail-hotspot tess-preview-grid-hotspot" data-detail-scope="tess-preview-detail" data-highlight="tess-preview-state" data-sequence-highlight="tess-preview-availability" data-sequence-state="1" data-sequence-control="tess-preview-availability" data-sequence-target-state="0" aria-hidden="true"></span>
+              <span class="hotspot detail-hotspot tess-preview-move-hotspot" data-detail-scope="tess-preview-detail" data-highlight="tess-preview-move" data-sequence-highlight="tess-preview-availability" data-sequence-state="0" aria-hidden="true"></span>
+
+              <span class="hotspot detail-hotspot tess-flip-generate-hotspot" data-detail-scope="tess-flip-detail" data-highlight="tess-flip-generate" aria-hidden="true"></span>
+              <span class="hotspot detail-hotspot tess-flip-vertical-hotspot" data-detail-scope="tess-flip-detail" data-highlight="tess-flip-vertical" aria-hidden="true"></span>
+              <span class="hotspot detail-hotspot tess-flip-horizontal-hotspot" data-detail-scope="tess-flip-detail" data-highlight="tess-flip-horizontal" aria-hidden="true"></span>
+            </div>
+          </figure>
+
+          <div class="tessellator-control-panel">
+            <ol id="tessellator-controls-overview" class="control-list tessellator-control-list" aria-label="Scrollable list of Shape Tessellator controls" tabindex="0">
+              <li>
+                <button type="button" class="control-card has-detail" data-control="tess-options" data-detail-target="tess-options-detail" aria-controls="tess-options-detail" aria-expanded="false" aria-pressed="false">
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Tessellation options</strong>
+                    <span>Choose how boundary polygons are handled and customize the preview display.</span>
+                  </span>
+                  <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="tess-run" aria-pressed="false">
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Tessellate</strong>
+                    <span>Generate tessellation polygons in QuPath for the selected annotations.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card has-detail" data-control="tess-flip" data-detail-target="tess-flip-detail" aria-controls="tess-flip-detail" aria-expanded="false" aria-pressed="false">
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>Image flipping</strong>
+                    <span>Preview horizontal or vertical image flips and create the transformed image.</span>
+                  </span>
+                  <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="tess-annotations" aria-pressed="false">
+                  <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>Annotations</strong>
+                    <span>
+                      Choose which annotations to tessellate. Only annotations from the currently
+                      open image are listed.
+                    </span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card has-image-states" data-control="tess-grid" data-image-sequence="tess-grid-shape" aria-pressed="false">
+                  <span class="number">5</span>
+                  <span class="control-copy">
+                    <strong>Grid shape</strong>
+                    <span>Use triangular, square, or hexagonal tessellation polygons.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true"><span class="state-dot" data-state-dot="0"></span><span class="state-dot" data-state-dot="1"></span><span class="state-dot is-active" data-state-dot="2"></span></span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Hexagonal grid</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card has-detail" data-control="tess-grid-preview" data-detail-target="tess-preview-detail" aria-controls="tess-preview-detail" aria-expanded="false" aria-pressed="false">
+                  <span class="number">6</span>
+                  <span class="control-copy">
+                    <strong>Tessellation preview</strong>
+                    <span>Review the generated grid and polygon count.</span>
+                  </span>
+                  <span class="detail-indicator" aria-hidden="true">&#8250;</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card" data-control="tess-image-preview" aria-controls="tess-image-preview-highlight" aria-pressed="false">
+                  <span class="number">7</span>
+                  <span class="control-copy">
+                    <strong>Image preview</strong>
+                    <span>
+                      Review the source image. The blue dot marks the location of the currently
+                      selected annotation.
+                    </span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card tab-navigation-card" data-control="tess-tab-main" data-tab-target="tab-main-window" aria-controls="panel-main-window" aria-pressed="false">
+                  <span class="number">8</span>
+                  <span class="control-copy"><strong>Main window</strong><span>Open the Main window guide.</span></span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card tab-navigation-card" data-control="tess-tab-outputs" data-tab-target="tab-outputs" aria-controls="panel-outputs" aria-pressed="false">
+                  <span class="number">9</span>
+                  <span class="control-copy"><strong>Outputs</strong><span>Open the Outputs guide.</span></span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="control-card tab-navigation-card" data-control="tess-tab-plate" data-tab-target="tab-plate-designer" aria-controls="panel-plate-designer" aria-pressed="false">
+                  <span class="number">10</span>
+                  <span class="control-copy"><strong>Plate Designer</strong><span>Open the Plate Designer guide.</span></span>
+                </button>
+              </li>
+            </ol>
+
+            <div id="tess-options-detail" class="control-detail" hidden>
+              <div class="detail-toolbar">
+                <button class="detail-back" type="button" data-tess-detail-back="tess-options-detail"><span aria-hidden="true">&#8592;</span> Back</button>
+                <strong>Tessellation options</strong>
+              </div>
+              <ol class="control-list detail-control-list" aria-label="Tessellation options" tabindex="0">
+                <li>
+                  <button type="button" class="control-card has-image-states" data-control="tess-mode" data-image-sequence="tess-mode" aria-pressed="false">
+                    <span class="number">1</span>
+                    <span class="control-copy">
+                      <strong>Boundary handling</strong>
+                      <span class="control-subheading" data-state-title>Add Polygons</span>
+                      <span data-state-description>Keep partial boundary polygons that overlap the annotation.</span>
+                    </span>
+                    <span class="state-indicator" aria-hidden="true"><span class="state-dot" data-state-dot="0"></span><span class="state-dot is-active" data-state-dot="1"></span><span class="state-dot" data-state-dot="2"></span></span>
+                    <span class="visually-hidden" data-state-label aria-live="polite">Add Polygons</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="control-card has-image-states" data-control="tess-display-hide" data-checkbox-group="tess-display" data-checkbox-option="hide-grid" aria-pressed="false">
+                    <span class="number">2</span>
+                    <span class="control-copy"><strong>Hide Grid</strong><span>Hide the tessellation polygons while keeping the annotation outline visible.</span></span>
+                    <span class="state-indicator" aria-hidden="true"><span class="state-dot is-active" data-state-dot="0"></span><span class="state-dot" data-state-dot="1"></span></span>
+                    <span class="visually-hidden" data-state-label aria-live="polite">Grid visible</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="control-card has-image-states" data-control="tess-display-image" data-checkbox-group="tess-display" data-checkbox-option="show-image" aria-pressed="false">
+                    <span class="number">3</span>
+                    <span class="control-copy"><strong>Show Image</strong><span>Show the source image inside the annotation preview.</span></span>
+                    <span class="state-indicator" aria-hidden="true"><span class="state-dot is-active" data-state-dot="0"></span><span class="state-dot" data-state-dot="1"></span></span>
+                    <span class="visually-hidden" data-state-label aria-live="polite">Source image hidden</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="control-card has-image-states" data-control="tess-display-classes" data-checkbox-group="tess-display" data-checkbox-option="assign-classes" aria-pressed="false">
+                    <span class="number">4</span>
+                    <span class="control-copy"><strong>Assign Classes</strong><span>Assign each generated polygon its own unique class.</span></span>
+                    <span class="state-indicator" aria-hidden="true">
+                      <span class="state-dot is-active" data-state-dot="0"></span><span class="state-dot" data-state-dot="1"></span>
+                    </span>
+                    <span class="visually-hidden" data-state-label aria-live="polite">Classes not assigned</span>
+                  </button>
+                </li>
+              </ol>
+            </div>
+
+            <div id="tess-preview-detail" class="control-detail" hidden>
+              <div class="detail-toolbar">
+                <button class="detail-back" type="button" data-tess-detail-back="tess-preview-detail"><span aria-hidden="true">&#8592;</span> Back</button>
+                <strong>Tessellation preview</strong>
+              </div>
+              <ol class="control-list detail-control-list" aria-label="Tessellation preview details" tabindex="0">
+                <li>
+                  <button type="button" class="control-card" data-control="tess-preview-area" aria-pressed="false">
+                    <span class="number">1</span>
+                    <span class="control-copy"><strong>Area field</strong><span>Shows the target area used for each tessellation polygon.</span></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="control-card" data-control="tess-preview-count" aria-pressed="false">
+                    <span class="number">2</span>
+                    <span class="control-copy"><strong>Polygon count</strong><span>Shows how many polygons the current settings will generate.</span></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="control-card has-image-states" data-control="tess-preview-state" data-image-sequence="tess-preview-availability" aria-pressed="false">
+                    <span class="number">3</span>
+                    <span class="control-copy"><strong>Preview disabled</strong><span>The preview is disabled if the estimated grid becomes too large, but this does not prevent the tessellation from running.</span></span>
+                    <span class="state-indicator" aria-hidden="true"><span class="state-dot is-active" data-state-dot="0"></span><span class="state-dot" data-state-dot="1"></span></span>
+                    <span class="visually-hidden" data-state-label aria-live="polite">Preview enabled</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="control-card" data-control="tess-preview-move" aria-pressed="false">
+                    <span class="number">4</span>
+                    <span class="control-copy"><strong>Move and rotate grid</strong><span>Click and drag to move the grid. Hold Ctrl while dragging to rotate it.</span></span>
+                  </button>
+                </li>
+              </ol>
+            </div>
+
+            <div id="tess-flip-detail" class="control-detail" hidden>
+              <div class="detail-toolbar">
+                <button class="detail-back" type="button" data-tess-detail-back="tess-flip-detail"><span aria-hidden="true">&#8592;</span> Back</button>
+                <strong>Image flipping</strong>
+              </div>
+              <ol class="control-list detail-control-list" aria-label="Image flipping controls" tabindex="0">
+                <li>
+                  <button type="button" class="control-card" data-control="tess-flip-generate" aria-pressed="false">
+                    <span class="number">1</span>
+                    <span class="control-copy"><strong>Flip Image</strong><span>Create a transformed image using the selected flip orientation.</span></span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="control-card has-image-states" data-control="tess-flip-vertical" data-checkbox-group="tess-flip" data-checkbox-option="vertical" aria-pressed="false">
+                    <span class="number">2</span>
+                    <span class="control-copy"><strong>Vertical flip</strong><span>Flip the image vertically.</span></span>
+                    <span class="state-indicator" aria-hidden="true"><span class="state-dot is-active" data-state-dot="0"></span><span class="state-dot" data-state-dot="1"></span></span>
+                    <span class="visually-hidden" data-state-label aria-live="polite">Vertical flip off</span>
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="control-card has-image-states" data-control="tess-flip-horizontal" data-checkbox-group="tess-flip" data-checkbox-option="horizontal" aria-pressed="false">
+                    <span class="number">3</span>
+                    <span class="control-copy"><strong>Horizontal flip</strong><span>Flip the image horizontally.</span></span>
+                    <span class="state-indicator" aria-hidden="true"><span class="state-dot is-active" data-state-dot="0"></span><span class="state-dot" data-state-dot="1"></span></span>
+                    <span class="visually-hidden" data-state-label aria-live="polite">Horizontal flip off</span>
+                  </button>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="tab-panel"
+        id="panel-outputs"
+        role="tabpanel"
+        aria-labelledby="tab-outputs"
+        tabindex="0"
+        hidden
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Interactive overview</p>
+            <h3>Output controls</h3>
+          </div>
+        </div>
+
+        <div class="guide-layout outputs-layout">
+          <figure class="screenshot-panel">
+            <div class="screenshot-stage" id="outputs-image">
+              <img
+                id="outputs-screenshot"
+                src="../outputs/guide_outputs_overview.png"
+                width="1098"
+                height="434"
+                alt="The expanded ShapeX Outputs section with laser-microdissection, plate-overview, i.DOT dispensing, and AnnData output choices."
+              >
+
+              <span
+                id="outputs-lmd-overview-highlight"
+                class="hotspot detail-hotspot outputs-lmd-overview-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-lmd"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="0"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="1"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-lmd-expanded-highlight"
+                class="hotspot detail-hotspot outputs-lmd-expanded-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-lmd"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="1"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="0"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="outputs-plate-overview-highlight"
+                class="hotspot detail-hotspot outputs-plate-overview-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-plate"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="0"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="2"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-plate-expanded-highlight"
+                class="hotspot detail-hotspot outputs-plate-expanded-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-plate"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="2"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="0"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="outputs-idot-overview-highlight"
+                class="hotspot detail-hotspot outputs-idot-overview-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-idot"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="0"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="3"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-idot-expanded-highlight"
+                class="hotspot detail-hotspot outputs-idot-expanded-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-idot"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="3"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="0"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="outputs-anndata-highlight"
+                class="hotspot detail-hotspot outputs-anndata-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-anndata"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="0"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="0"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="outputs-lmd-from-plate-highlight"
+                class="hotspot detail-hotspot outputs-lmd-from-expanded-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-lmd"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="2"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="1"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-lmd-from-idot-highlight"
+                class="hotspot detail-hotspot outputs-lmd-from-idot-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-lmd"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="3"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="1"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="outputs-plate-from-lmd-highlight"
+                class="hotspot detail-hotspot outputs-plate-from-lmd-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-plate"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="1"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="2"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-plate-from-idot-highlight"
+                class="hotspot detail-hotspot outputs-plate-from-idot-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-plate"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="3"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="2"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="outputs-idot-from-lmd-highlight"
+                class="hotspot detail-hotspot outputs-idot-from-lmd-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-idot"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="1"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="3"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-idot-from-plate-highlight"
+                class="hotspot detail-hotspot outputs-idot-from-plate-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-idot"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="2"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="3"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="outputs-anndata-from-lmd-highlight"
+                class="hotspot detail-hotspot outputs-anndata-from-lmd-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-anndata"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="1"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-anndata-from-plate-highlight"
+                class="hotspot detail-hotspot outputs-anndata-from-plate-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-anndata"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="2"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-anndata-from-idot-highlight"
+                class="hotspot detail-hotspot outputs-anndata-from-idot-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-anndata"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="3"
+                data-sequence-control="outputs-sections"
+                data-sequence-target-state="0"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="outputs-main-overview-highlight"
+                class="hotspot detail-hotspot tab-navigation-hotspot outputs-main-overview-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-tab-main"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-collapse-overview-highlight"
+                class="hotspot detail-hotspot outputs-collapse-overview-hotspot"
+                data-detail-scope="outputs"
+                data-tab-target="tab-main-window"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-collapse-expanded-highlight"
+                class="hotspot detail-hotspot outputs-collapse-expanded-hotspot"
+                data-detail-scope="outputs"
+                data-tab-target="tab-main-window"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-states="1 2"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-collapse-idot-highlight"
+                class="hotspot detail-hotspot outputs-collapse-idot-hotspot"
+                data-detail-scope="outputs"
+                data-tab-target="tab-main-window"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="3"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-main-expanded-highlight"
+                class="hotspot detail-hotspot tab-navigation-hotspot outputs-main-expanded-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-tab-main"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-states="1 2"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-main-idot-highlight"
+                class="hotspot detail-hotspot tab-navigation-hotspot outputs-main-idot-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-tab-main"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="3"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="outputs-tessellator-overview-highlight"
+                class="hotspot detail-hotspot tab-navigation-hotspot outputs-tessellator-overview-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-tab-tessellator"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-tessellator-expanded-highlight"
+                class="hotspot detail-hotspot tab-navigation-hotspot outputs-tessellator-expanded-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-tab-tessellator"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-states="1 2"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-tessellator-idot-highlight"
+                class="hotspot detail-hotspot tab-navigation-hotspot outputs-tessellator-idot-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-tab-tessellator"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="3"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                id="outputs-plate-designer-overview-highlight"
+                class="hotspot detail-hotspot tab-navigation-hotspot outputs-plate-designer-overview-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-tab-plate-designer"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="0"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-plate-designer-expanded-highlight"
+                class="hotspot detail-hotspot tab-navigation-hotspot outputs-plate-designer-expanded-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-tab-plate-designer"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-states="1 2"
+                aria-hidden="true"
+              ></span>
+              <span
+                id="outputs-plate-designer-idot-highlight"
+                class="hotspot detail-hotspot tab-navigation-hotspot outputs-plate-designer-idot-hotspot"
+                data-detail-scope="outputs"
+                data-highlight="outputs-tab-plate-designer"
+                data-sequence-highlight="outputs-sections"
+                data-sequence-state="3"
+                aria-hidden="true"
+              ></span>
+            </div>
+          </figure>
+
+          <div class="outputs-control-panel">
+            <ol class="control-list outputs-control-list" aria-label="ShapeX output controls" tabindex="0">
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="outputs-lmd"
+                  data-image-sequence="outputs-sections"
+                  data-image-state="1"
+                  data-image-collapse-state="0"
+                  aria-controls="outputs-lmd-overview-highlight outputs-lmd-expanded-highlight outputs-screenshot"
+                  aria-pressed="false"
+                >
+                  <span class="number">1</span>
+                  <span class="control-copy">
+                    <strong>Laser microdissection</strong>
+                    <span>Choose the microscope system to generate an output file for.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Collapsed</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="outputs-plate"
+                  data-image-sequence="outputs-sections"
+                  data-image-state="2"
+                  data-image-collapse-state="0"
+                  aria-controls="outputs-plate-overview-highlight outputs-plate-expanded-highlight outputs-screenshot"
+                  aria-pressed="false"
+                >
+                  <span class="number">2</span>
+                  <span class="control-copy">
+                    <strong>Plate overview</strong>
+                    <span>Choose the file format used for the plate overview.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Collapsed</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card has-image-states"
+                  data-control="outputs-idot"
+                  data-image-sequence="outputs-sections"
+                  data-image-state="3"
+                  data-image-collapse-state="0"
+                  aria-controls="outputs-idot-overview-highlight outputs-idot-expanded-highlight outputs-screenshot"
+                  aria-pressed="false"
+                >
+                  <span class="number">3</span>
+                  <span class="control-copy">
+                    <strong>i.DOT dispensing</strong>
+                    <span>Define the liquid name and volume for each dispensing step.</span>
+                  </span>
+                  <span class="state-indicator" aria-hidden="true">
+                    <span class="state-dot is-active" data-state-dot="0"></span>
+                    <span class="state-dot" data-state-dot="1"></span>
+                  </span>
+                  <span class="visually-hidden" data-state-label aria-live="polite">Collapsed</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card"
+                  data-control="outputs-anndata"
+                  data-image-sequence="outputs-sections"
+                  data-image-state="0"
+                  aria-controls="outputs-anndata-highlight outputs-anndata-from-lmd-highlight outputs-anndata-from-plate-highlight outputs-anndata-from-idot-highlight outputs-screenshot"
+                  aria-pressed="false"
+                >
+                  <span class="number">4</span>
+                  <span class="control-copy">
+                    <strong>AnnData</strong>
+                    <span>Create an .h5ad file containing the annotation data and QuPath keys.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card tab-navigation-card"
+                  data-control="outputs-tab-main"
+                  data-tab-target="tab-main-window"
+                  aria-controls="outputs-main-overview-highlight outputs-main-expanded-highlight outputs-main-idot-highlight panel-main-window"
+                  aria-pressed="false"
+                >
+                  <span class="number">5</span>
+                  <span class="control-copy">
+                    <strong>Main window</strong>
+                    <span>Open the Main window guide.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card tab-navigation-card"
+                  data-control="outputs-tab-tessellator"
+                  data-tab-target="tab-shape-tessellator"
+                  aria-controls="outputs-tessellator-overview-highlight outputs-tessellator-expanded-highlight outputs-tessellator-idot-highlight panel-shape-tessellator"
+                  aria-pressed="false"
+                >
+                  <span class="number">6</span>
+                  <span class="control-copy">
+                    <strong>Shape Tessellator</strong>
+                    <span>Open the Shape Tessellator guide.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="control-card tab-navigation-card"
+                  data-control="outputs-tab-plate-designer"
+                  data-tab-target="tab-plate-designer"
+                  aria-controls="outputs-plate-designer-overview-highlight outputs-plate-designer-expanded-highlight outputs-plate-designer-idot-highlight panel-plate-designer"
+                  aria-pressed="false"
+                >
+                  <span class="number">7</span>
+                  <span class="control-copy">
+                    <strong>Plate Designer</strong>
+                    <span>Open the Plate Designer guide.</span>
+                  </span>
+                </button>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div
+      class="instrument-guide-modal"
+      id="instrument-guide-modal"
+      data-instrument-guide-modal
+      hidden
+    >
+      <div class="instrument-guide-backdrop" data-instrument-guide-close></div>
+      <section
+        class="instrument-guide-window"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="instrument-guide-title"
+        aria-describedby="instrument-guide-introduction"
+      >
+        <header class="instrument-guide-header">
+          <div>
+            <p class="instrument-guide-type" data-instrument-guide-type></p>
+            <div class="instrument-guide-title-row">
+              <h3 id="instrument-guide-title" data-instrument-guide-title></h3>
+              <span class="instrument-guide-status" data-instrument-guide-status></span>
+            </div>
+          </div>
+          <button
+            class="instrument-guide-close"
+            type="button"
+            aria-label="Close instrument guide"
+            data-instrument-guide-close
+          >×</button>
+        </header>
+        <div class="instrument-guide-body">
+          <p
+            class="instrument-guide-introduction"
+            id="instrument-guide-introduction"
+            data-instrument-guide-introduction
+          ></p>
+          <section
+            class="instrument-guide-section calibration-guide"
+            data-calibration-guide-section
+            hidden
+          >
+            <p class="calibration-guide-instruction" data-calibration-guide-instruction>
+              Select a blue marker to inspect that calibration point at higher magnification.
+            </p>
+            <button
+              class="calibration-guide-overview"
+              type="button"
+              data-calibration-guide-overview
+              hidden
+            >
+              <span aria-hidden="true">←</span>
+              Back to overview
+            </button>
+            <div class="calibration-guide-stage">
+              <img
+                data-calibration-guide-image
+                src="../workflow/calibration/guide_calibration_points_overview.png"
+                width="1988"
+                height="1238"
+                alt="QuPath overview showing three widely separated calibration points across the tissue."
+              >
+              <button
+                class="calibration-guide-point calibration-guide-point-1"
+                type="button"
+                data-calibration-guide-point="point-1"
+                aria-label="Open a close-up of calibration point 1"
+              ></button>
+              <button
+                class="calibration-guide-point calibration-guide-point-2"
+                type="button"
+                data-calibration-guide-point="point-2"
+                aria-label="Open a close-up of calibration point 2"
+              ></button>
+              <button
+                class="calibration-guide-point calibration-guide-point-3"
+                type="button"
+                data-calibration-guide-point="point-3"
+                aria-label="Open a close-up of calibration point 3"
+              ></button>
+            </div>
+          </section>
+          <div class="instrument-guide-file" data-instrument-guide-file-section>
+            <p>Output location</p>
+            <code data-instrument-guide-file></code>
+          </div>
+          <div
+            class="instrument-guide-details"
+            data-instrument-guide-details-section
+            hidden
+          >
+            <div data-instrument-guide-details></div>
+          </div>
+          <section class="instrument-guide-section" data-instrument-guide-steps-section>
+            <h4>How to use the output</h4>
+            <ol data-instrument-guide-steps></ol>
+          </section>
+          <section class="instrument-guide-section" data-instrument-guide-checks-section>
+            <h4>Before you continue</h4>
+            <ul data-instrument-guide-checks></ul>
+          </section>
+          <aside class="instrument-guide-unavailable" data-instrument-guide-unavailable hidden>
+            ShapeX does not currently support this instrument, but we would love to support it!
+            To do so, we need your help. If you can share file-format specifications, example
+            files, or workflow documentation,
+            <a href="https://github.com/Schoof-Lab/ShapeX/issues">request instrument support on GitHub</a>.
+          </aside>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
