@@ -5,12 +5,19 @@ const highlights = [...document.querySelectorAll("[data-highlight]")];
 const installationLayout = document.querySelector?.(".installation-layout");
 const installationStepsOverview = document.getElementById?.("installation-steps-overview");
 const installationCatalogDetail = document.getElementById?.("installation-catalog-detail");
+const installationShapexDetail = document.getElementById?.("installation-shapex-detail");
 const installationCatalogCard = document.getElementById?.("installation-catalog-card");
 const installationRequirement = document.querySelector?.(".installation-requirement");
 const installationCatalogPreview = document.getElementById?.("installation-catalog-preview");
+const installationShapexPreview = document.getElementById?.("installation-shapex-preview");
 const installationCatalogScreenshot = document.getElementById?.("installation-catalog-screenshot");
-const installationDetailTrigger = document.querySelector?.(".installation-detail-trigger");
-const installationDetailBack = document.querySelector?.("[data-installation-detail-back]");
+const installationShapexScreenshot = document.getElementById?.("installation-shapex-screenshot");
+const installationDetailTriggers = [
+  ...document.querySelectorAll("[data-installation-detail-trigger]"),
+];
+const installationDetailBackControls = [
+  ...document.querySelectorAll("[data-installation-detail-back]"),
+];
 const installationCatalogCopy = document.querySelector?.("[data-copy-catalog-url]");
 const installationCatalogCopyStatus = document.querySelector?.("[data-copy-catalog-status]");
 const installationCatalogCopyAction = document.querySelector?.("[data-installation-copy-action]");
@@ -19,6 +26,12 @@ const installationCatalogStateControls = [
 ];
 const installationCatalogHighlights = [
   ...document.querySelectorAll("[data-installation-highlight-state]"),
+];
+const installationShapexStateControls = [
+  ...document.querySelectorAll("[data-installation-shapex-state]"),
+];
+const installationShapexHighlights = [
+  ...document.querySelectorAll("[data-installation-shapex-highlight-state]"),
 ];
 const instrumentGuideTriggers = [
   ...document.querySelectorAll("[data-instrument-guide]"),
@@ -76,6 +89,23 @@ const installationCatalogStates = {
     alt: "QuPath's Extension Catalog Manager with the Schoof Lab catalog URL ready to be added.",
   },
 };
+
+const installationShapexStates = {
+  select: {
+    source: "../installation/shapex/guide_installation_shapex_select.png",
+    width: "868",
+    height: "468",
+    alt: "QuPath's Extension Manager with the green install button beside QuPath ShapeX extension.",
+  },
+  install: {
+    source: "../installation/shapex/guide_installation_shapex_install.png",
+    width: "611",
+    height: "342",
+    alt: "The Install extension dialog showing ShapeX v0.1.0 and the Install button.",
+  },
+};
+
+let activeInstallationDetail = null;
 
 const instrumentGuides = new Map([
   [
@@ -479,33 +509,98 @@ function showInstallationCatalogState(stateName) {
   }
 }
 
-function openInstallationCatalogDetail() {
-  if (!installationStepsOverview || !installationCatalogDetail || !installationCatalogPreview) {
+function showInstallationShapexState(stateName) {
+  const state = installationShapexStates[stateName];
+  if (!state) {
+    return;
+  }
+
+  if (installationShapexScreenshot) {
+    installationShapexScreenshot.src = state.source;
+    installationShapexScreenshot.setAttribute("width", state.width);
+    installationShapexScreenshot.setAttribute("height", state.height);
+    installationShapexScreenshot.alt = state.alt;
+  }
+  for (const control of installationShapexStateControls) {
+    const isSelected = control.dataset.installationShapexState === stateName;
+    control.classList.toggle("is-active", isSelected);
+    control.setAttribute("aria-pressed", String(isSelected));
+  }
+  for (const highlight of installationShapexHighlights) {
+    highlight.classList.toggle(
+      "is-active",
+      highlight.dataset.installationShapexHighlightState === stateName,
+    );
+  }
+}
+
+function getInstallationDetail(detailName) {
+  if (detailName === "catalog") {
+    return {
+      detail: installationCatalogDetail,
+      preview: installationCatalogPreview,
+      initialState: () => showInstallationCatalogState("manager"),
+    };
+  }
+  if (detailName === "shapex") {
+    return {
+      detail: installationShapexDetail,
+      preview: installationShapexPreview,
+      initialState: () => showInstallationShapexState("select"),
+    };
+  }
+  return null;
+}
+
+function openInstallationDetail(detailName) {
+  const selectedDetail = getInstallationDetail(detailName);
+  if (!installationStepsOverview || !selectedDetail?.detail || !selectedDetail.preview) {
     return;
   }
 
   installationStepsOverview.hidden = true;
-  installationCatalogDetail.hidden = false;
+  installationCatalogDetail.hidden = detailName !== "catalog";
+  installationShapexDetail.hidden = detailName !== "shapex";
   if (installationCatalogCard) {
     installationCatalogCard.hidden = true;
   }
   if (installationRequirement) {
     installationRequirement.hidden = true;
   }
-  installationCatalogPreview.hidden = false;
+  installationCatalogPreview.hidden = detailName !== "catalog";
+  installationShapexPreview.hidden = detailName !== "shapex";
   installationLayout?.classList.toggle("is-catalog-detail", true);
-  installationDetailTrigger?.setAttribute("aria-expanded", "true");
-  showInstallationCatalogState("manager");
-  installationDetailBack?.focus();
+  for (const trigger of installationDetailTriggers) {
+    trigger.setAttribute(
+      "aria-expanded",
+      String(trigger.dataset.installationDetailTrigger === detailName),
+    );
+  }
+  selectedDetail.initialState();
+  activeInstallationDetail = detailName;
+  document.querySelector?.(`[data-installation-detail-back="${detailName}"]`)?.focus();
 }
 
-function closeInstallationCatalogDetail(restoreFocus = true) {
-  if (!installationStepsOverview || !installationCatalogDetail || !installationCatalogPreview) {
+function closeInstallationDetail(restoreFocus = true) {
+  if (!installationStepsOverview) {
     return;
   }
 
-  installationCatalogDetail.hidden = true;
-  installationCatalogPreview.hidden = true;
+  const previousTrigger = installationDetailTriggers.find(
+    (trigger) => trigger.dataset.installationDetailTrigger === activeInstallationDetail,
+  );
+  if (installationCatalogDetail) {
+    installationCatalogDetail.hidden = true;
+  }
+  if (installationShapexDetail) {
+    installationShapexDetail.hidden = true;
+  }
+  if (installationCatalogPreview) {
+    installationCatalogPreview.hidden = true;
+  }
+  if (installationShapexPreview) {
+    installationShapexPreview.hidden = true;
+  }
   if (installationCatalogCard) {
     installationCatalogCard.hidden = false;
   }
@@ -514,11 +609,15 @@ function closeInstallationCatalogDetail(restoreFocus = true) {
   }
   installationStepsOverview.hidden = false;
   installationLayout?.classList.toggle("is-catalog-detail", false);
-  installationDetailTrigger?.setAttribute("aria-expanded", "false");
+  for (const trigger of installationDetailTriggers) {
+    trigger.setAttribute("aria-expanded", "false");
+  }
   showInstallationCatalogState("manager");
+  showInstallationShapexState("select");
+  activeInstallationDetail = null;
 
   if (restoreFocus) {
-    installationDetailTrigger?.focus();
+    previousTrigger?.focus();
   }
 }
 
@@ -1716,12 +1815,23 @@ for (const backButton of mainRunPanelBackButtons) {
     returnToPreviousMainRunPanel(backButton.dataset.mainRunPanelBack);
   });
 }
-installationDetailTrigger?.addEventListener("click", openInstallationCatalogDetail);
-installationDetailBack?.addEventListener("click", () => closeInstallationCatalogDetail());
+for (const trigger of installationDetailTriggers) {
+  trigger.addEventListener("click", () => {
+    openInstallationDetail(trigger.dataset.installationDetailTrigger);
+  });
+}
+for (const backControl of installationDetailBackControls) {
+  backControl.addEventListener("click", () => closeInstallationDetail());
+}
 installationCatalogCopy?.addEventListener("click", copyInstallationCatalogUrl);
 for (const control of installationCatalogStateControls) {
   control.addEventListener("click", () => {
     showInstallationCatalogState(control.dataset.installationCatalogState);
+  });
+}
+for (const control of installationShapexStateControls) {
+  control.addEventListener("click", () => {
+    showInstallationShapexState(control.dataset.installationShapexState);
   });
 }
 for (const trigger of instrumentGuideTriggers) {

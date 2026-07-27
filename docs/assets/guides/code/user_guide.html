@@ -112,6 +112,7 @@
               <button
                 class="installation-detail-trigger"
                 type="button"
+                data-installation-detail-trigger="catalog"
                 aria-controls="installation-catalog-detail installation-catalog-preview"
                 aria-expanded="false"
               >
@@ -123,12 +124,21 @@
                 <span class="installation-detail-indicator" aria-hidden="true">&#8250;</span>
               </button>
             </li>
-            <li>
-              <span class="step-number">2</span>
-              <div>
-                <strong>Install ShapeX</strong>
-                <p>Open the CDL catalog and install ShapeX.</p>
-              </div>
+            <li class="installation-step-with-detail">
+              <button
+                class="installation-detail-trigger"
+                type="button"
+                data-installation-detail-trigger="shapex"
+                aria-controls="installation-shapex-detail installation-shapex-preview"
+                aria-expanded="false"
+              >
+                <span class="step-number">2</span>
+                <span class="installation-step-copy">
+                  <strong>Install ShapeX</strong>
+                  <span>Open the CDL catalog and install ShapeX.</span>
+                </span>
+                <span class="installation-detail-indicator" aria-hidden="true">&#8250;</span>
+              </button>
             </li>
             <li>
               <span class="step-number">3</span>
@@ -141,7 +151,7 @@
 
           <div id="installation-catalog-detail" class="installation-detail" hidden>
             <div class="detail-toolbar">
-              <button class="detail-back" type="button" data-installation-detail-back>
+              <button class="detail-back" type="button" data-installation-detail-back="catalog">
                 <span aria-hidden="true">&#8592;</span> Back
               </button>
               <strong>Add the extension catalog</strong>
@@ -192,6 +202,45 @@
             </ol>
           </div>
 
+          <div id="installation-shapex-detail" class="installation-detail" hidden>
+            <div class="detail-toolbar">
+              <button class="detail-back" type="button" data-installation-detail-back="shapex">
+                <span aria-hidden="true">&#8592;</span> Back
+              </button>
+              <strong>Install ShapeX</strong>
+            </div>
+            <ol class="installation-detail-steps">
+              <li>
+                <button
+                  type="button"
+                  class="installation-detail-card is-active"
+                  data-installation-shapex-state="select"
+                  aria-pressed="true"
+                >
+                  <span class="step-number">1</span>
+                  <span>
+                    <strong>Select ShapeX</strong>
+                    <span>Expand the <b>QuPath CDL catalog</b> and select the green <b>+</b> beside <b>QuPath ShapeX extension</b>.</span>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="installation-detail-card"
+                  data-installation-shapex-state="install"
+                  aria-pressed="false"
+                >
+                  <span class="step-number">2</span>
+                  <span>
+                    <strong>Install the extension</strong>
+                    <span>Confirm the ShapeX version and select <b>Install</b>.</span>
+                  </span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
           <div class="installation-catalog-column">
             <p class="installation-requirement">ShapeX requires QuPath 0.7.0 or newer.</p>
             <aside id="installation-catalog-card" class="installation-card" aria-label="QuPath website">
@@ -221,6 +270,27 @@
                 <span
                   class="installation-image-highlight installation-catalog-highlight"
                   data-installation-highlight-state="catalog"
+                  aria-hidden="true"
+                ></span>
+              </div>
+            </figure>
+            <figure id="installation-shapex-preview" class="installation-preview" hidden>
+              <div class="installation-preview-stage">
+                <img
+                  id="installation-shapex-screenshot"
+                  src="../installation/shapex/guide_installation_shapex_select.png"
+                  width="868"
+                  height="468"
+                  alt="QuPath's Extension Manager with the green install button beside QuPath ShapeX extension."
+                >
+                <span
+                  class="installation-image-highlight installation-shapex-select-highlight is-active"
+                  data-installation-shapex-highlight-state="select"
+                  aria-hidden="true"
+                ></span>
+                <span
+                  class="installation-image-highlight installation-shapex-install-highlight"
+                  data-installation-shapex-highlight-state="install"
                   aria-hidden="true"
                 ></span>
               </div>

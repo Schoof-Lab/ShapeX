@@ -551,6 +551,20 @@ h4 {
   height: 9.6%;
 }
 
+.installation-shapex-select-highlight {
+  top: 78.1%;
+  left: 85.5%;
+  width: 3.9%;
+  height: 5.7%;
+}
+
+.installation-shapex-install-highlight {
+  top: 77.8%;
+  left: 46.1%;
+  width: 8.3%;
+  height: 7.4%;
+}
+
 .workflow-panel {
   padding-bottom: clamp(1rem, 3vw, 2.5rem);
 }
