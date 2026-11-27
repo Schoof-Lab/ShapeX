@@ -56,7 +56,9 @@ Currently, ShapeX can generate files only for Leica LMD systems and the i.DOT di
 
 ## How to cite
 
-Coming soon... But if you like the extension, feel free to leave a ⭐️.
+If you like ShapeX, please feel free to cite the preprint and leave a ⭐️.
+
+> Daucke, R., Nielsen, M. W., Jacobsen, J. B., Tkach, V. V., Hammouda, N. M., Lund, E. L., Areškevičiūtė, A., Kristensen, B. W., Petrosius, V., & Schoof, E. M. (2026). *A one-pot workflow for spatial proteomics aided by ShapeX*. bioRxiv. https://www.biorxiv.org/content/10.64898/2026.11.24.768900v1
 
 ## Acknowledgments
 
